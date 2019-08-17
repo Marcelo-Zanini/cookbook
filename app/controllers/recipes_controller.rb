@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: %i[show edit update]
-
+  before_action :load_collections, only: %i[new create edit update]
 
   def index
     @recipes = Recipe.all
@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to @recipe
     else
-      flash.now[:alert] = 'Você deve informar todos os dados da receita'
+      flash.now[:alert] = 'Não foi possível salvar a receita'
       render :new
     end
   end
@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
     if @recipe.update(set_params)
       redirect_to @recipe
     else
-      flash.now[:alert] = 'Você deve informar todos os dados da receita'
+      flash.now[:alert] = 'Não foi possível salvar a receita'
       render :edit
     end
   end
@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
   private
 
   def set_params
-    params.require(:recipe).permit(%i[title recipe_type cuisine difficulty
+    params.require(:recipe).permit(%i[title recipe_type_id cuisine difficulty
       cook_time ingredients cook_method])
   end
 
@@ -46,4 +46,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def load_collections
+    @recipe_types = RecipeType.all
+  end
 end

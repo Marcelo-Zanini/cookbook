@@ -6,14 +6,14 @@
   <%= f.label :recipe_type_id, 'Tipo da Receita' %>
   <%= f.collection_select(:recipe_type_id, @recipe_types, :id, :name) %>
 
-  <%= f.label :cuisine, 'Cozinha' %>
-  <%= f.text_field :cuisine %>
+  <%= f.label :cuisine_id, 'Cozinha' %>
+  <%= f.collection_select(:cuisine_id, @cuisines, :id, :name) %>
 
   <%= f.label :difficulty, 'Dificuldade' %>
   <%= f.text_field :difficulty %>
 
   <%= f.label :cook_time, 'Tempo de Preparo' %>
-  <%= f.text_field :cook_time %>
+  <%= f.number_field :cook_time %>
 
   <%= f.label :ingredients, 'Ingredientes' %>
   <%= f.text_area :ingredients %>

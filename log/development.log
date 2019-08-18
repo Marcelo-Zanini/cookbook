@@ -355,3 +355,84 @@ Migrating to AddRecipeTypeRefToRecipe (20190817224604)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RemoveCuisineFromRecipe (20190818010402)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecipes" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "cuisine" varchar DEFAULT NULL, "difficulty" varchar DEFAULT NULL, "cook_time" integer DEFAULT NULL, "ingredients" text DEFAULT NULL, "cook_method" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "recipe_type_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_arecipes_on_recipe_type_id" ON "arecipes" ("recipe_type_id")[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "arecipes" ("id","title","cuisine","difficulty","cook_time","ingredients","cook_method","created_at","updated_at","recipe_type_id")
+                     SELECT "id","title","cuisine","difficulty","cook_time","ingredients","cook_method","created_at","updated_at","recipe_type_id" FROM "recipes"[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "recipes"[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "difficulty" varchar DEFAULT NULL, "cook_time" integer DEFAULT NULL, "ingredients" text DEFAULT NULL, "cook_method" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "recipe_type_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_recipes_on_recipe_type_id" ON "recipes" ("recipe_type_id")[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "recipes" ("id","title","difficulty","cook_time","ingredients","cook_method","created_at","updated_at","recipe_type_id")
+                     SELECT "id","title","difficulty","cook_time","ingredients","cook_method","created_at","updated_at","recipe_type_id" FROM "arecipes"[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arecipes"[0m
+  ↳ db/migrate/20190818010402_remove_cuisine_from_recipe.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190818010402"]]
+  ↳ bin/rails:9
+  [1m[35m (474.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateCuisines (20190818010419)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190818010419_create_cuisines.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "cuisines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190818010419_create_cuisines.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190818010419"]]
+  ↳ bin/rails:9
+  [1m[35m (131.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddCuisineRefToRecipe (20190818010443)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "recipes" ADD "cuisine_id" integer[0m
+  ↳ db/migrate/20190818010443_add_cuisine_ref_to_recipe.rb:3
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190818010443_add_cuisine_ref_to_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_recipes_on_cuisine_id" ON "recipes" ("cuisine_id")[0m
+  ↳ db/migrate/20190818010443_add_cuisine_ref_to_recipe.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190818010443"]]
+  ↳ bin/rails:9
+  [1m[35m (1074.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9

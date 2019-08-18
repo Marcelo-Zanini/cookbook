@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
   private
 
   def set_params
-    params.require(:recipe).permit(%i[title recipe_type_id cuisine difficulty
+    params.require(:recipe).permit(%i[title recipe_type_id cuisine_id difficulty
       cook_time ingredients cook_method])
   end
 
@@ -48,5 +48,6 @@ class RecipesController < ApplicationController
 
   def load_collections
     @recipe_types = RecipeType.all
+    @cuisines = Cuisine.all
   end
 end

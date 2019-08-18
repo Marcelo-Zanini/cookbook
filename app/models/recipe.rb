@@ -1,7 +1,8 @@
 class Recipe < ApplicationRecord
   belongs_to :recipe_type
 
-  validates :title, :recipe_type_id, :cuisine, :difficulty, :cook_time, :ingredients, :cook_method , presence: true
+  validates :title, :recipe_type_id, :cuisine, :difficulty, :cook_time,
+   :ingredients, :cook_method, presence: true
 
 
   def cook_time_min

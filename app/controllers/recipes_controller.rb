@@ -35,6 +35,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    @recipes = Recipe.where("title LIKE ?", "%#{params[:term]}%")
+    if @recipes == []
+      flash.now[:alert] = 'Receita não encontrada'
+    end
+  end
+
   private
 
   def set_params

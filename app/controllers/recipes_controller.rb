@@ -43,8 +43,8 @@ class RecipesController < ApplicationController
   private
 
   def set_params
-    params.require(:recipe).permit(%i[title recipe_type_id cuisine_id
-       difficulty cook_time ingredients cook_method])
+    parameters = params.require(:recipe).permit(%i[title recipe_type_id cuisine_id
+       difficulty cook_time ingredients cook_method]).to_h.map {|k,v| [k,v.capitalize]}.to_h
   end
 
   def find_recipe

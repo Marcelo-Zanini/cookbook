@@ -18,7 +18,7 @@ feature 'User register recipe' do
     fill_in 'Dificuldade', with: 'Fácil'
     fill_in 'Tempo de Preparo', with: '45'
     fill_in 'Ingredientes', with: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha'
-    fill_in 'Como Preparar', with: 'Misturar tudo e servir. Adicione limão a gosto.'
+    fill_in 'Como Preparar', with: 'Misturar tudo e servir, Adicione limão a gosto.'
     click_on 'Enviar'
 
 
@@ -32,7 +32,7 @@ feature 'User register recipe' do
     expect(page).to have_css('h3', text: 'Ingredientes')
     expect(page).to have_css('p', text: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha')
     expect(page).to have_css('h3', text: 'Como Preparar')
-    expect(page).to have_css('p', text:  'Misturar tudo e servir. Adicione limão a gosto.')
+    expect(page).to have_css('p', text:  'Misturar tudo e servir, adicione limão a gosto.')
   end
 
   scenario 'and must fill in all fields' do

@@ -1,4 +1,5 @@
 class RecipeTypesController < ApplicationController
+
   def new
     @recipe_type = RecipeType.new
   end
@@ -18,7 +19,6 @@ class RecipeTypesController < ApplicationController
   end
 
   private
-
   def set_params
     params.require(:recipe_type).permit(:name)
   end

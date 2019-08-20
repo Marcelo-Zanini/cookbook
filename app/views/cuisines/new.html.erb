@@ -1,3 +1,7 @@
+<% @cuisine.errors.full_messages.each do |error| %>
+  <%= error %>
+<% end %>
+
 <%= form_for @cuisine do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name %>

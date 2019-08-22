@@ -183,3 +183,409 @@ Migrating to DeviseCreateUsers (20190822012342)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddUserRefToRecipe (20190822014300)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "recipes" ADD "user_id" integer[0m
+  ↳ db/migrate/20190822014300_add_user_ref_to_recipe.rb:3
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190822014300_add_user_ref_to_recipe.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_recipes_on_user_id" ON "recipes" ("user_id")[0m
+  ↳ db/migrate/20190822014300_add_user_ref_to_recipe.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190822014300"]]
+  ↳ bin/rails:9
+  [1m[35m (740.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-08-21 23:00:17 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 223ms (Views: 218.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-21 23:00:17 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-21 23:00:20 -0300
+Processing by RecipesController#new as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-08-21 23:00:20 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-08-21 23:00:28 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+gQvmXm6WBTXZNcZpixBXSB1A2nyVYe1YuEaJH6wpv8X83LYCUFBw4V24DYANSY96PdwLYDDvjuQbkpf2Yzg0A==", "user"=>{"email"=>"marcelo.zanini@outlook.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "marcelo.zanini@outlook.com"], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+gQvmXm6WBTXZNcZpixBXSB1A2nyVYe1YuEaJH6wpv8X83LYCUFBw4V24DYANSY96PdwLYDDvjuQbkpf2Yzg0A==", "user"=>{"email"=>"marcelo.zanini@outlook.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 129ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-08-21 23:00:30 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.5ms)
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-08-21 23:00:53 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AhWcL8MXmtFF2du3NoJLTkFbiPPbfPrLGl4fsZeHru3tTPyyDiuSmUc+HtLF0JWaQPQi5ODz6J/VF2M6C5gMtw==", "user"=>{"email"=>"marcelo@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@test.com"], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "marcelo@test.com"], ["encrypted_password", "$2a$11$IdL8XHxutLO9VpBQUihO0OV8RUg.DIgvFjuPHqb94Mwq5yfDA2Ohi"], ["created_at", "2019-08-22 02:00:53.430069"], ["updated_at", "2019-08-22 02:00:53.430069"]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (66.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/recipes/new
+Completed 302 Found in 183ms (ActiveRecord: 66.3ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-21 23:00:53 -0300
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:7
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:10
+  Rendered recipes/_form.html.erb (3.0ms)
+  Rendered recipes/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 21ms (Views: 10.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-08-21 23:01:11 -0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-08-21 23:01:11 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipe_types/new" for ::1 at 2019-08-21 23:01:14 -0300
+Processing by RecipeTypesController#new as HTML
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 18ms (Views: 12.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/recipe_types" for ::1 at 2019-08-21 23:01:17 -0300
+Processing by RecipeTypesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iuwmgcRZ6+msz5YhESV6hL/w8KURcFbvxbCCR7qt6nangy4xON9mcSBRNG0XX4BMfP8ldt2IpX/xSKzYmG7UtQ==", "recipe_type"=>{"name"=>"Entrada"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipe_types_controller.rb:9
+  [1m[36mRecipeType Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_types" WHERE LOWER("recipe_types"."name") = LOWER(?) LIMIT ?[0m  [["name", "Entrada"], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_types_controller.rb:9
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Entrada"], ["created_at", "2019-08-22 02:01:17.456798"], ["updated_at", "2019-08-22 02:01:17.456798"]]
+  ↳ app/controllers/recipe_types_controller.rb:9
+  [1m[35m (828.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipe_types_controller.rb:9
+Redirected to http://localhost:3000/recipe_types/1
+Completed 302 Found in 834ms (ActiveRecord: 828.5ms)
+
+
+Started GET "/recipe_types/1" for ::1 at 2019-08-21 23:01:18 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_types_controller.rb:18
+  Rendering recipe_types/show.html.erb within layouts/application
+  Rendered recipe_types/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-21 23:01:19 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cuisines/new" for ::1 at 2019-08-21 23:01:21 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/cuisines" for ::1 at 2019-08-21 23:01:25 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Dlt6YbzP2YwJO+Vem5siVhsWNWw72B7kdVB94vPFOEMT52FkDgqoay0QFoPNTabNuyT/OJpxQM/SshMRvi4Cg==", "cuisine"=>{"name"=>"Brasileira"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cuisines_controller.rb:9
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  ↳ app/controllers/cuisines_controller.rb:9
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2019-08-22 02:01:25.215396"], ["updated_at", "2019-08-22 02:01:25.215396"]]
+  ↳ app/controllers/cuisines_controller.rb:9
+  [1m[35m (317.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cuisines_controller.rb:9
+Redirected to http://localhost:3000/cuisines/1
+Completed 302 Found in 322ms (ActiveRecord: 318.0ms)
+
+
+Started GET "/cuisines/1" for ::1 at 2019-08-21 23:01:25 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cuisines_controller.rb:18
+  Rendering cuisines/show.html.erb within layouts/application
+  Rendered cuisines/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-21 23:01:26 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-21 23:01:28 -0300
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:7
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:10
+  Rendered recipes/_form.html.erb (3.4ms)
+  Rendered recipes/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-21 23:02:00 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U4JTlVl6x8rG1UeBOtjYFh/IQE/IKL4/+C0+GpUAlxcqP0FRkWg/WvDsyRazF/zsLtsXtFc86rybZxSYAGFmrQ==", "recipe"=>{"title"=>"Risotto de Cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"10", "ingredients"=>"arroz e cogumelos", "cook_method"=>"misture o arroz e os cogumelos"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:7
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:10
+  Rendered recipes/_form.html.erb (1.8ms)
+  Rendered recipes/new.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 25ms (Views: 11.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-21 23:02:51 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCyHSLBipAj+dSLLmPelMiCzwVAsnPJCpD7pOt07aYrHvidG8qaDxPsQJKH3/zd0Frjf59Ps07aEnkESdh0Hrg==", "recipe"=>{"title"=>"Risotto de cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"10", "ingredients"=>"Arroz e cogumelos", "cook_method"=>"Misture o arroz e os cogumelos"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:7
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:10
+  Rendered recipes/_form.html.erb (2.1ms)
+  Rendered recipes/new.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 37ms (Views: 15.6ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-21 23:03:27 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBQNtdH6R9LZvAAUEJdRSf4RPeNyz6ssRcInMse0EvJ3hq27kz5gHtzZBn5/n8MPyBojVI2/ithlYo8abJJ81g==", "recipe"=>{"title"=>"Risotto de cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"10", "ingredients"=>"Arroz e cogumelos", "cook_method"=>"Misture o arroz e os cogumelos"}, "commit"=>"Enviar"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/recipes_controller.rb:18
+Completed 422 Unprocessable Entity in 35ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: User must exist):
+  
+app/controllers/recipes_controller.rb:18:in `create'
+Started GET "/recipes" for ::1 at 2019-08-21 23:04:08 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-08-21 23:04:14 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2019-08-21 23:04:14 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:4
+  Rendered recipes/index.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-21 23:04:18 -0300
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:7
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:10
+  Rendered recipes/_form.html.erb (7.4ms)
+  Rendered recipes/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 47ms (Views: 31.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-21 23:04:47 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x2G8C+THVemYlJu/jndIf/EFxIVn/ujfjcLcBpQqEzi+3K7PLNWtea6tFSgHuGyFwBaTfvjqvFzuiPaEAUvigg==", "recipe"=>{"title"=>"Risotto de Cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"10", "ingredients"=>"arroz e cogumelos", "cook_method"=>"misture o arroz com os cogumelos"}, "commit"=>"Enviar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:19
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:19
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:19
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "cuisine_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Risotto de cogumelos"], ["difficulty", "Dificinho"], ["cook_time", 10], ["ingredients", "Arroz e cogumelos"], ["cook_method", "Misture o arroz com os cogumelos"], ["created_at", "2019-08-22 02:04:47.617401"], ["updated_at", "2019-08-22 02:04:47.617401"], ["recipe_type_id", 1], ["cuisine_id", 1], ["user_id", 1]]
+  ↳ app/controllers/recipes_controller.rb:19
+  [1m[35m (838.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:19
+Redirected to http://localhost:3000/recipes/1
+Completed 302 Found in 849ms (ActiveRecord: 839.0ms)
+
+
+Started GET "/recipes/1" for ::1 at 2019-08-21 23:04:48 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:2
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:5
+  Rendered recipes/show.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.6ms)
+
+

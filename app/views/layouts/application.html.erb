@@ -17,9 +17,12 @@
       <% if user_signed_in? %>
         <h4>Olá, <%= current_user.email %></h4>
         <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
+        <%= link_to 'Enviar uma receita', new_recipe_path %>
       <% else %>
         <%= link_to 'Entrar', new_user_session_path %>
       <% end %>
+      <%= link_to 'Enviar tipo de receita', new_recipe_type_path %>
+      <%= link_to 'Enviar cozinha', new_cuisine_path %>
     </nav>
 
     <%= form_tag search_path, method: :get do %>

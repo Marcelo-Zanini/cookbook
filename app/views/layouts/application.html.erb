@@ -10,7 +10,18 @@
   </head>
 
   <body>
+    <%= flash[:notice] %>
     <%= flash[:alert] %>
+
+    <nav>
+      <% if user_signed_in? %>
+        <h4>Olá, <%= current_user.email %></h4>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
+      <% else %>
+        <%= link_to 'Entrar', new_user_session_path %>
+      <% end %>
+    </nav>
+
     <%= form_tag search_path, method: :get do %>
       <%= label_tag :term, 'Busca' %>
       <%= text_field_tag :term %>

@@ -2,6 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :recipe_type
   belongs_to :cuisine
   belongs_to :user
+  has_many :list_items
+  has_many :recipe_lists through: :list_items
 
   validates :title, :difficulty, :cook_time,
    :ingredients, :cook_method, presence: {message:'é campo obrigatório'}

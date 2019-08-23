@@ -14,3 +14,11 @@
 <p><%= @recipe.ingredients %></p>
 <h3> Como Preparar </h3>
 <p><%= @recipe.cook_method %></p>
+
+<%= form_for @list_item, url: add_to_list_recipe_path do |f| %>
+
+  <%= f.label :recipe_list_id, 'Minhas Listas' %>
+  <%= f.collection_select(:recipe_list_id, @recipe_lists, :id, :name) %>
+
+  <%= f.submit 'Adicionar à Lista' %>
+<% end %>

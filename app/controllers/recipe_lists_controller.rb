@@ -15,7 +15,6 @@ class RecipeListsController < ApplicationController
     return redirect_to @recipe_list if @recipe_list.save
 
     catch_save :new
-
   end
 
   def show

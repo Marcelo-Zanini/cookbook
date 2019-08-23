@@ -22,9 +22,10 @@ feature 'User view owned recipes' do
                                   user: other_user, cook_time: 50,
                                   ingredients: 'Farinha, açucar, cenoura',
                                   cook_method: 'Cozinhe a maçã, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    #act
     visit root_path
     click_on 'Entrar'
-    #act
+
     within('.formulario') do
       fill_in 'Email', with: user.email
       fill_in 'Senha', with: '123456'

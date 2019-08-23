@@ -22,6 +22,7 @@
         <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
         <%= link_to 'Enviar uma receita', new_recipe_path %>
         <%= link_to 'Minhas Receitas', my_recipes_path%>
+        <%= link_to 'Minhas Listas', recipe_lists_path%>
       <% else %>
         <%= link_to 'Entrar', new_user_session_path %>
       <% end %>

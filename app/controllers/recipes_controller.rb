@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :find_recipe, only: %i[show edit update]
+  before_action :find_recipe, only: %i[show edit update add_to_list]
   before_action :set_collections, only: %i[new edit]
   before_action :authenticate_user!, only: %i[new edit my]
 
@@ -7,7 +7,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show; end
+  def show
+    @list_item = ListItem.new
+    @recipe_lists = RecipeList.where(user:current_user)
+  end
 
   def my
     @recipes = Recipe.where(user: current_user)
@@ -33,6 +36,19 @@ class RecipesController < ApplicationController
     return redirect_to @recipe  if @recipe.update(set_params)
 
     catch_save :edit
+  end
+
+  def add_to_list
+    @list_item = ListItem.new(params.require(:list_item).permit(:recipe_list_id))
+    @list_item.recipe = @recipe
+    if @list_item.save
+      flash[:notice] = 'Adicionado à lista com Sucesso'
+    else
+      @list_item.errors.full_messages.each do |error|
+        flash[:alert] = error
+      end
+    end
+    redirect_to @recipe
   end
 
   def search

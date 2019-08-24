@@ -51,6 +51,13 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
+  def remove_from_list
+    recipe = Recipe.find(params[:recipe])
+    recipe_list = RecipeList.find(params[:id])
+    list_item = ListItem.find_by(recipe: recipe, recipe_list: recipe_list)
+    redirect_to recipe_list_path if list_item.destroy
+  end
+
   def search
     @recipes = Recipe.where("title LIKE ?", "%#{params[:term]}%")
     flash.now[:alert] = 'Receita não encontrada' if @recipes.empty?
@@ -77,5 +84,4 @@ class RecipesController < ApplicationController
     flash.now[:alert] = 'Não foi possível salvar a receita'
     render view
   end
-
 end

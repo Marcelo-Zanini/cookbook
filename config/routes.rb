@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :recipe_lists, only: %i[index new create show]
   resources :recipes, only: %i[show new create edit update my] do
     post 'add_to_list', on: :member
+    delete 'remove_from_list', on: :member
   end
   get 'my_recipes', to: 'recipes#my'
   get 'search', to: 'recipes#search'

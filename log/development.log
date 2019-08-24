@@ -2605,3 +2605,806 @@ NoMethodError (undefined method `<' for nil:NilClass):
 app/controllers/recipes_controller.rb:48:in `block in add_to_list'
 app/controllers/recipes_controller.rb:47:in `each'
 app/controllers/recipes_controller.rb:47:in `add_to_list'
+Started GET "/" for ::1 at 2019-08-24 18:02:13 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.4ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (25.7ms)
+  Rendered recipes/index.html.erb within layouts/application (26.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 219ms (Views: 210.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2019-08-24 18:02:14 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (3.2ms)
+  Rendered recipes/index.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipes/1" for ::1 at 2019-08-24 18:02:15 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:67
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:9
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:10
+  [1m[36mRecipeList Load (137.8ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:21
+  Rendered recipes/show.html.erb within layouts/application (148.6ms)
+Completed 200 OK in 172ms (Views: 18.5ms | ActiveRecord: 139.3ms)
+
+
+Started POST "/recipes/1/add_to_list" for ::1 at 2019-08-24 18:02:19 -0300
+Processing by RecipesController#add_to_list as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9FNZQyIOzitimUhnRmNv9MYAYrYAdmaDUkwRWoxWUEq6FNZIZnDX9vGdEZR/ACzr2BoagrcrsfwJTNmP1DGPuA==", "list_item"=>{"recipe_list_id"=>"1"}, "commit"=>"Adicionar à Lista", "id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:67
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:44
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:44
+  [1m[36mListItem Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "list_items" WHERE "list_items"."recipe_id" = ? AND "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_id", 1], ["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:44
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/recipes_controller.rb:44
+Redirected to http://localhost:3000/recipes/1
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/recipes/1" for ::1 at 2019-08-24 18:02:19 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:67
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:9
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:10
+  [1m[36mRecipeList Load (0.0ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:21
+  Rendered recipes/show.html.erb within layouts/application (28.3ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/recipe_lists" for ::1 at 2019-08-24 18:02:26 -0300
+Processing by RecipeListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipe_lists/index.html.erb within layouts/application
+  [1m[36mRecipeList Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:2
+  [1m[36mRecipeList Load (0.0ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:5
+  Rendered recipe_lists/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 18ms (Views: 9.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:02:27 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  Rendered recipe_lists/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 227ms (Views: 11.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:03:52 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  Rendered recipe_lists/show.html.erb within layouts/application (212.7ms)
+Completed 200 OK in 227ms (Views: 223.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-24 18:10:34 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (26.1ms)
+  Rendered recipes/index.html.erb within layouts/application (26.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 168ms (Views: 161.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2019-08-24 18:10:35 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (3.1ms)
+  Rendered recipes/index.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipes/1" for ::1 at 2019-08-24 18:10:36 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:67
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:9
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:10
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:21
+  Rendered recipes/show.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 28ms (Views: 15.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/recipe_lists" for ::1 at 2019-08-24 18:10:59 -0300
+Processing by RecipeListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipe_lists/index.html.erb within layouts/application
+  [1m[36mRecipeList Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:2
+  [1m[36mRecipeList Load (0.0ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:5
+  Rendered recipe_lists/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 47ms (Views: 43.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:11:02 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (10.5ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    3:  <h3>Esta lista ainda esta vazia</h3>
+    4: <% end %>
+    5: <% @recipe_list.recipes.each do |recipe| %>
+    6:   <% link_to @recipe.title, @recipe %>
+    7:   <% link_to 'Remover', remove_from_list_recipe_path(@recipe) %>
+    8: <% end %>
+  
+app/views/recipe_lists/show.html.erb:6:in `block in _app_views_recipe_lists_show_html_erb___4366656050237767657_69945895094200'
+app/views/recipe_lists/show.html.erb:5:in `_app_views_recipe_lists_show_html_erb___4366656050237767657_69945895094200'
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:11:22 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.0ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (101.5ms)
+Completed 500 Internal Server Error in 106ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `remove_from_list_recipe_path' for #<#<Class:0x00007f3b24117f68>:0x0000557e761d1e70>):
+    4: <% end %>
+    5: <% @recipe_list.recipes.each do |recipe| %>
+    6:   <% link_to recipe.title, recipe %>
+    7:   <% link_to 'Remover', remove_from_list_recipe_path(recipe) %>
+    8: <% end %>
+  
+app/views/recipe_lists/show.html.erb:7:in `block in _app_views_recipe_lists_show_html_erb___4366656050237767657_47000817836280'
+app/views/recipe_lists/show.html.erb:5:in `_app_views_recipe_lists_show_html_erb___4366656050237767657_47000817836280'
+Started GET "/" for ::1 at 2019-08-24 18:11:30 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (2.9ms)
+  Rendered recipes/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipe_lists" for ::1 at 2019-08-24 18:11:32 -0300
+Processing by RecipeListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipe_lists/index.html.erb within layouts/application
+  [1m[36mRecipeList Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:2
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:5
+  Rendered recipe_lists/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:11:33 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (122.9ms)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `remove_from_list_recipe_path' for #<#<Class:0x00007f3b24117f68>:0x00007f3b1409fb90>):
+    4: <% end %>
+    5: <% @recipe_list.recipes.each do |recipe| %>
+    6:   <% link_to recipe.title, recipe %>
+    7:   <% link_to 'Remover', remove_from_list_recipe_path(recipe) %>
+    8: <% end %>
+  
+app/views/recipe_lists/show.html.erb:7:in `block in _app_views_recipe_lists_show_html_erb___4366656050237767657_69945857933920'
+app/views/recipe_lists/show.html.erb:5:in `_app_views_recipe_lists_show_html_erb___4366656050237767657_69945857933920'
+Started GET "/" for ::1 at 2019-08-24 18:24:34 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (19.2ms)
+  Rendered recipes/index.html.erb within layouts/application (19.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 221ms (Views: 214.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2019-08-24 18:24:34 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (2.8ms)
+  Rendered recipes/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:20
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipe_lists" for ::1 at 2019-08-24 18:24:37 -0300
+Processing by RecipeListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipe_lists/index.html.erb within layouts/application
+  [1m[36mRecipeList Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:2
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:5
+  Rendered recipe_lists/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 23ms (Views: 14.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:24:38 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.3ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 21ms (Views: 16.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:24:52 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.2ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recipes/1" for ::1 at 2019-08-24 18:24:56 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:67
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:9
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:10
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:21
+  Rendered recipes/show.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 26ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/my_recipes" for ::1 at 2019-08-24 18:24:59 -0300
+Processing by RecipesController#my as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/my.html.erb within layouts/application
+  [1m[36mRecipe Load (95.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  Rendered recipes/_list.html.erb (99.2ms)
+  Rendered recipes/my.html.erb within layouts/application (100.0ms)
+Completed 200 OK in 112ms (Views: 14.0ms | ActiveRecord: 96.2ms)
+
+
+Started GET "/recipe_lists" for ::1 at 2019-08-24 18:25:21 -0300
+Processing by RecipeListsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipe_lists/index.html.erb within layouts/application
+  [1m[36mRecipeList Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:2
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipe_lists/index.html.erb:5
+  Rendered recipe_lists/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:25:25 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "marcelo@teste.com"], ["encrypted_password", "$2a$11$LUmRWr6b1psXNhTyGTqWIO/QldC2OLrGpKVi0i9Sesui8K2P/hBz6"], ["created_at", "2019-08-24 21:27:49.119487"], ["updated_at", "2019-08-24 21:27:49.119487"]]
+  [1m[35m (604.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeList Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE LOWER("recipe_lists"."name") = LOWER(?) AND "recipe_lists"."user_id" = ? LIMIT ?[0m  [["name", "Gostosuras"], ["user_id", 3], ["LIMIT", 1]]
+  [1m[36mRecipeList Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_lists" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Gostosuras"], ["user_id", 3], ["created_at", "2019-08-24 21:27:49.737689"], ["updated_at", "2019-08-24 21:27:49.737689"]]
+  [1m[35m (66.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeType Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_types" WHERE LOWER("recipe_types"."name") = LOWER(?) LIMIT ?[0m  [["name", "Sobremesa"], ["LIMIT", 1]]
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2019-08-24 21:27:49.812932"], ["updated_at", "2019-08-24 21:27:49.812932"]]
+  [1m[35m (70.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mRecipe Create (30.5ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 50], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["created_at", "2019-08-24 21:27:49.907870"], ["updated_at", "2019-08-24 21:27:49.907870"], ["recipe_type_id", 2], ["user_id", 3]]
+  [1m[35m (79.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de Bacalhau"], ["difficulty", "Médio"], ["cook_time", 50], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe o bacalhau, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["created_at", "2019-08-24 21:27:50.024114"], ["updated_at", "2019-08-24 21:27:50.024114"], ["recipe_type_id", 2], ["user_id", 3]]
+  [1m[35m (61.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mListItem Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "list_items" WHERE "list_items"."recipe_id" = ? AND "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_id", 2], ["recipe_list_id", 2], ["LIMIT", 1]]
+  [1m[36mListItem Create (0.2ms)[0m  [1m[32mINSERT INTO "list_items" ("recipe_list_id", "recipe_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["recipe_list_id", 2], ["recipe_id", 2], ["created_at", "2019-08-24 21:27:50.096848"], ["updated_at", "2019-08-24 21:27:50.096848"]]
+  [1m[35m (68.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mListItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "list_items" WHERE "list_items"."recipe_id" = ? AND "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_id", 3], ["recipe_list_id", 2], ["LIMIT", 1]]
+  [1m[36mListItem Create (0.2ms)[0m  [1m[32mINSERT INTO "list_items" ("recipe_list_id", "recipe_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["recipe_list_id", 2], ["recipe_id", 3], ["created_at", "2019-08-24 21:28:40.792430"], ["updated_at", "2019-08-24 21:28:40.792430"]]
+  [1m[35m (191.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 2]]
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:34:16 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 218ms (Views: 201.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:34:35 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:35:01 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:36:05 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.0ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recipe_lists/1" for ::1 at 2019-08-24 18:37:32 -0300
+Processing by RecipeListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT  "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipe_lists_controller.rb:21
+  Rendering recipe_lists/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:2
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "list_items" ON "recipes"."id" = "list_items"."recipe_id" WHERE "list_items"."recipe_list_id" = ?[0m  [["recipe_list_id", 1]]
+  ↳ app/views/recipe_lists/show.html.erb:5
+  Rendered recipe_lists/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeList Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_lists" WHERE LOWER("recipe_lists"."name") = LOWER(?) AND "recipe_lists"."user_id" IS NULL LIMIT ?[0m  [["name", "Gostosuras"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[36mRecipeList Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_lists" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gostosuras"], ["created_at", "2019-08-24 21:46:01.023175"], ["updated_at", "2019-08-24 21:46:01.023175"]]
+  [1m[35m (408.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeType Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_types" WHERE LOWER("recipe_types"."name") = LOWER(?) LIMIT ?[0m  [["name", "Sobremesa"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeType Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_types" WHERE LOWER("recipe_types"."name") = LOWER(?) LIMIT ?[0m  [["name", "Sobremesa"], ["LIMIT", 1]]
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de Cenoura"], ["difficulty", "Médio"], ["cook_time", 50], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["created_at", "2019-08-24 21:46:01.476214"], ["updated_at", "2019-08-24 21:46:01.476214"]]
+  [1m[35m (67.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipeType Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipe_types" WHERE LOWER("recipe_types"."name") = LOWER(?) LIMIT ?[0m  [["name", "Sobremesa"], ["LIMIT", 1]]
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de Bacalhau"], ["difficulty", "Médio"], ["cook_time", 50], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe o bacalhau, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["created_at", "2019-08-24 21:46:01.552564"], ["updated_at", "2019-08-24 21:46:01.552564"]]
+  [1m[35m (70.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mListItem Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "list_items" WHERE "list_items"."recipe_id" = ? AND "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_id", 4], ["recipe_list_id", 3], ["LIMIT", 1]]
+  [1m[36mListItem Create (0.2ms)[0m  [1m[32mINSERT INTO "list_items" ("recipe_list_id", "recipe_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["recipe_list_id", 3], ["recipe_id", 4], ["created_at", "2019-08-24 21:46:01.634033"], ["updated_at", "2019-08-24 21:46:01.634033"]]
+  [1m[35m (68.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mListItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "list_items" WHERE "list_items"."recipe_id" = ? AND "list_items"."recipe_list_id" = ? LIMIT ?[0m  [["recipe_id", 5], ["recipe_list_id", 3], ["LIMIT", 1]]
+  [1m[36mListItem Create (0.2ms)[0m  [1m[32mINSERT INTO "list_items" ("recipe_list_id", "recipe_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["recipe_list_id", 3], ["recipe_id", 5], ["created_at", "2019-08-24 21:46:02.471674"], ["updated_at", "2019-08-24 21:46:02.471674"]]
+  [1m[35m (1222.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2019-08-24 19:36:09 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (27.0ms)
+  Rendered recipes/index.html.erb within layouts/application (27.6ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_47127241285280'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_47127241285280'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_47127241152100'
+Started GET "/" for ::1 at 2019-08-24 19:36:10 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (5.7ms)
+  Rendered recipes/index.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_47127240060280'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_47127240060280'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_47127239951120'
+Started GET "/" for ::1 at 2019-08-24 19:37:09 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (18.5ms)
+  Rendered recipes/index.html.erb within layouts/application (19.0ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_47127234687340'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_47127234687340'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_47127234176360'
+Started GET "/" for ::1 at 2019-08-24 19:38:33 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (23.6ms)
+  Rendered recipes/index.html.erb within layouts/application (24.0ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_47127242025100'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_47127242025100'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_47127241926960'
+Started GET "/" for ::1 at 2019-08-24 19:41:43 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (18.4ms)
+  Rendered recipes/index.html.erb within layouts/application (18.8ms)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_70208054398600'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_70208054398600'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_70208054367400'
+Started GET "/" for ::1 at 2019-08-24 19:41:44 -0300
+Processing by RecipesController#index as HTML
+Started GET "/" for ::1 at 2019-08-24 19:41:52 -0300
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:1
+Processing by RecipesController#index as HTML
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:5
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/_list.html.erb (2210.9ms)
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (2213.1ms)
+  ↳ app/views/recipes/_list.html.erb:1
+Completed 500 Internal Server Error in 9484ms (ActiveRecord: 0.4ms)
+
+
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  
+  ↳ app/views/recipes/_list.html.erb:4
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  ↳ app/views/recipes/_list.html.erb:5
+  
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_70208056196320'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_70208056196320'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_70208056138880'
+  ↳ app/views/recipes/_list.html.erb:4
+  Rendered recipes/_list.html.erb (79.5ms)
+  Rendered recipes/index.html.erb within layouts/application (81.3ms)
+Completed 500 Internal Server Error in 2288ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2:   <h1><%=link_to recipe.title, recipe %></h1>
+    3:   <ul>
+    4:     <li> <%= recipe.recipe_type.name %></li>
+    5:     <li> <%= recipe.cuisine.name %></li>
+    6:     <li> <%= recipe.difficulty %></li>
+    7:     <li> <%= recipe.cook_time_min %></li>
+    8:   </ul>
+  
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb__3210964358386237893_70208056584740'
+app/views/recipes/_list.html.erb:1:in `_app_views_recipes__list_html_erb__3210964358386237893_70208056584740'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb__629007298607941252_70208056455300'

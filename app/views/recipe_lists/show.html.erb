@@ -1,2 +1,11 @@
 <h2><%= @recipe_list.name %></h2>
+<% if @recipe_list.recipes.empty? %>
  <h3>Esta lista ainda esta vazia</h3>
+<% end %>
+<% @recipe_list.recipes.each do |recipe| %>
+  <div id="recipe<%= recipe.id %>">
+    <h3><%= link_to recipe.title, recipe %></h3>
+    <%= link_to 'Remover', remove_from_list_recipe_path(recipe: recipe),
+     method: :delete %>
+  </div>
+<% end %>

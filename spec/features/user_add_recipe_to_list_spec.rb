@@ -42,7 +42,6 @@ feature 'User add recipe to list' do
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     list_item = ListItem.create(recipe: recipe, recipe_list: recipe_list)
     #act
-    #act
     visit root_path
     click_on 'Entrar'
 

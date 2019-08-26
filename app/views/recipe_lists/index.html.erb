@@ -1,8 +1,8 @@
 <%= link_to 'Nova Lista', new_recipe_list_path%>
 <% if @recipe_lists.empty? %>
-  <h2>Você ainda não possui nenhuma lista</h2>
+  <h3>Você ainda não possui nenhuma lista</h3>
 <% else %>
   <% @recipe_lists.each do |recipe_list| %>
-    <h2><%= link_to recipe_list.name, recipe_list %></h2>
+    <h3><%= link_to recipe_list.name, recipe_list %></h3>
   <% end %>
 <% end %>

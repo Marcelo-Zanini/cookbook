@@ -1,10 +1,10 @@
-<h1><%= @recipe.title %> </h1>
-<h2>
+<h3><%= @recipe.title %> </h3>
+<h4>
   Receita enviada por <%= @recipe.user.email %>
 <%if current_user == @recipe.user %>
   <%= link_to 'Editar', edit_recipe_path(@recipe) %>
 <% end %>
-</h2>
+</h4>
 <h3> Detalhes </h3>
 <p>
   <strong>Imagem da Receita</strong>

@@ -1,9 +1,31 @@
-<% @recipes.each do |recipe| %>
-  <h1><%=link_to recipe.title, recipe %></h1>
-  <ul>
-    <li> <%= recipe.recipe_type.name %></li>
-    <li> <%= recipe.cuisine.name %></li>
-    <li> <%= recipe.difficulty %></li>
-    <li> <%= recipe.cook_time_min %></li>
-  </ul>
+<div class="row container">
+  <% @recipes.each do |recipe| %>
+
+    <div class="col-sm-6">
+      <%= link_to(recipe, class:'text-decoration-none text-dark ') do %>
+      <div class="card bg-light">
+        <div class="card-body clearfix">
+          <div class="row">
+
+            <div class="col-sm">
+              <%= image_tag recipe.picture, class:'img-thumbnail'%>
+            </div>
+
+            <div class="col-sm ">
+              <h3><%= recipe.title %></h3>
+              <ul>
+                <li> <%= recipe.recipe_type.name %></li>
+                <li> <%= recipe.cuisine.name %></li>
+                <li> <%= recipe.difficulty %></li>
+                <li> <%= recipe.cook_time_min %></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+
   <% end %>
+</div>

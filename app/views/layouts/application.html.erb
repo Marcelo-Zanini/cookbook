@@ -10,34 +10,28 @@
   </head>
 
   <body>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-    <header>
-      <h1> CookBook </h1>
-      <h4> Bem-vindo ao maior livro de receitas online </h4>
+    <header class = "bg-dark text-light">
+      <div class="container clearfix">
+          <div class=" mt-2 mb-0 float-left">
+            <h1> <%= link_to 'CookBook', root_path, class: "text-decoration-none text-light"%> </h1>
+          </div>
+          <div class="mt-4 mb-0 float-right">
+            <% if user_signed_in? %>
+              <p>Olá, <%= current_user.email %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
+              </p>
+            <% else %>
+              <%= link_to 'Entrar', new_user_session_path %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </header>
-    <nav>
-      <% if user_signed_in? %>
-        <h4>Olá, <%= current_user.email %></h4>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
-        <%= link_to 'Enviar uma receita', new_recipe_path %>
-        <%= link_to 'Minhas Receitas', my_recipes_path%>
-        <%= link_to 'Minhas Listas', recipe_lists_path%>
-      <% else %>
-        <%= link_to 'Entrar', new_user_session_path %>
-      <% end %>
-      <%= link_to 'Enviar tipo de receita', new_recipe_type_path %>
-      <%= link_to 'Enviar cozinha', new_cuisine_path %>
-    </nav>
-
-    <%= form_tag search_path, method: :get do %>
-      <%= label_tag :term, 'Busca' %>
-      <%= text_field_tag :term %>
-      <%= submit_tag 'Buscar' %>
-    <% end %>
-    <%= yield %>
-    <br/>
-    <br/>
-    <%= link_to 'Voltar', root_path%>
+    <%= render 'shared/nav' %>
+    <main class="container">
+      <p class=" text-warning"> <%= flash[:alert] %></p>
+      <p class=" text-success"><%= flash[:notice] %></p>
+      <%= yield %>
+    </main>
   </body>
 </html>

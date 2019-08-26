@@ -20,6 +20,8 @@ gem 'bootstrap', '~> 4.3.1'
 
 gem 'jquery-rails'
 
+gem 'popper_js', '~> 1.14.5'
+
 gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views

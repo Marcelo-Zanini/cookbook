@@ -34,8 +34,8 @@ feature 'User view owned recipes' do
     click_on 'Minhas Receitas'
     #assert
     expect(page).to have_css('.owner', text: "Receitas criadas por #{user.email}")
-    expect(page).to have_css('h1', text: recipe.title)
-    expect(page).to have_css('h1', text: recipe.title)
+    expect(page).to have_css('h3', text: recipe.title)
+    expect(page).to have_css('h3', text: recipe.title)
     expect(page).not_to have_content(another_recipe.title)
   end
   scenario 'and must be logged in' do

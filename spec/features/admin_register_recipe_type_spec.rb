@@ -11,7 +11,7 @@ feature 'Admin register recipe_type' do
     click_on 'Enviar'
 
     #assert
-    expect(page).to have_css('h1', text: 'Prato Principal')
+    expect(page).to have_css('h3', text: 'Prato Principal')
   end
 
   scenario 'and must fill name field' do

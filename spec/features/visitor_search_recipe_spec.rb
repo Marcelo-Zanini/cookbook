@@ -26,7 +26,7 @@ feature 'Visitor search recipe' do
     fill_in 'Busca', with: recipe.title
     click_on 'Buscar'
     #assert
-    expect(page).to have_css('h1', text: recipe.title)
+    expect(page).to have_css('h3', text: recipe.title)
     expect(page).not_to have_content(another_recipe.title)
   end
   scenario 'by full title with no results' do
@@ -89,8 +89,8 @@ feature 'Visitor search recipe' do
     fill_in 'Busca', with: 'Bolo'
     click_on 'Buscar'
     #assert
-    expect(page).to have_css('h1', text: recipe.title)
-    expect(page).to have_css('h1', text: another_recipe.title)
+    expect(page).to have_css('h3', text: recipe.title)
+    expect(page).to have_css('h3', text: another_recipe.title)
     expect(page).not_to have_content(third_recipe.title)
   end
 end

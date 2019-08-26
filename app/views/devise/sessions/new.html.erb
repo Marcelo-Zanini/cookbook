@@ -1,26 +1,29 @@
+<div class="formulario form_group form-control-sm">
+
 <h2>Log in</h2>
-<div class="formulario">
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="field mb-1">
     <%= f.label :email, 'Email' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control-sm' %>
   </div>
 
   <div class="field">
     <%= f.label :password, 'Senha' %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class:'form-control-sm'  %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, class:'form-check_input' %>
+      <%= f.label :remember_me, class:'form-check-label' %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Entrar" %>
+    <%= f.submit "Entrar", class:'btn btn-dark' %>
   </div>
 <% end %>
-</div>
+
 <%= render "devise/shared/links" %>
+</div>

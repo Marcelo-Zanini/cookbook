@@ -33,7 +33,7 @@ feature 'User register recipe' do
 
     # expectativas
     expect(page).to have_css('h2', text: "Receita enviada por #{user.email}")
-    expect(page).to have_css('h1', text: 'Tabule')
+    expect(page).to have_css('h3', text: 'Tabule')
     expect(page).to have_css('h3', text: 'Detalhes')
     expect(page).to have_css('p', text: 'Entrada')
     expect(page).to have_css('p', text: 'Arabe')

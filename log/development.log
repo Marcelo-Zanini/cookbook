@@ -6537,3 +6537,969 @@ Processing by RecipesController#show as HTML
 Completed 200 OK in 38ms (Views: 35.5ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/recipes/new" for ::1 at 2019-08-26 01:30:50 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:12
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:16
+  Rendered recipes/_form.html.erb (9.9ms)
+  Rendered recipes/new.html.erb within layouts/application (10.5ms)
+  Rendered shared/_nav.html.erb (0.8ms)
+Completed 200 OK in 265ms (Views: 238.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-26 01:31:09 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lv6joGm49bcSL+dcxlB+HkipYfnF+CoaCFH44sXyPmciD5UrHUWS2CL0kbHrB5L9+w+aEc8yZNb1s62gdNRS2g==", "recipe"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f3f1c0bdcb0 @tempfile=#<Tempfile:/tmp/RackMultipart20190826-25489-1w2ap6r.jpg>, @original_filename="risotto-de-cogumelos-e-bacon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"recipe[picture]\"; filename=\"risotto-de-cogumelos-e-bacon.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"manjar", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"330", "ingredients"=>"ggdgfdg", "cook_method"=>"fghxffh"}, "commit"=>"Enviar"}
+[36m  Disk Storage (0.8ms) [0m[32mUploaded file to key: HvGufb3p4Q1ZJSMtcu7Aynjx (checksum: u82+rQ8wUWLXcnM/Vc/4DA==)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "HvGufb3p4Q1ZJSMtcu7Aynjx"], ["filename", "risotto-de-cogumelos-e-bacon.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 38660], ["checksum", "u82+rQ8wUWLXcnM/Vc/4DA=="], ["created_at", "2019-08-26 04:31:09.761048"]]
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (82.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:29
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "cuisine_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "manjar"], ["difficulty", "Dificinho"], ["cook_time", 330], ["ingredients", "ggdgfdg"], ["cook_method", "fghxffh"], ["created_at", "2019-08-26 04:31:09.860840"], ["updated_at", "2019-08-26 04:31:09.860840"], ["recipe_type_id", 1], ["cuisine_id", 1], ["user_id", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "picture"], ["record_type", "Recipe"], ["record_id", 5], ["blob_id", 5], ["created_at", "2019-08-26 04:31:09.862944"]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Update (0.1ms)[0m  [1m[33mUPDATE "recipes" SET "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["updated_at", "2019-08-26 04:31:09.864211"], ["id", 5]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[35m (94.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 719f2ccf-7f8f-4033-a54e-3303117024b1) to Async(default) with arguments: #<GlobalID:0x00007f3f26118bd8 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/5>>
+Redirected to http://localhost:3000/recipes/5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 302 Found in 259ms (ActiveRecord: 178.6ms)
+
+
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1] Performing ActiveStorage::AnalyzeJob (Job ID: 719f2ccf-7f8f-4033-a54e-3303117024b1) from Async(default) with arguments: #<GlobalID:0x00007f3f1c0a4ee0 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: HvGufb3p4Q1ZJSMtcu7Aynjx[0m
+Started GET "/recipes/5" for ::1 at 2019-08-26 01:31:09 -0300
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#show as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+  Parameters: {"id"=>"5"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   [1m[35m (81.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:74
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [719f2ccf-7f8f-4033-a54e-3303117024b1] Performed ActiveStorage::AnalyzeJob (Job ID: 719f2ccf-7f8f-4033-a54e-3303117024b1) from Async(default) in 93.46ms
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:13
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:14
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:25
+  Rendered recipes/show.html.erb within layouts/application (7.9ms)
+  Rendered shared/_nav.html.erb (0.7ms)
+Completed 200 OK in 124ms (Views: 24.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c32da96c30f9caf32b6f98948e816f6c45b4a541/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:31:10 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c32da96c30f9caf32b6f98948e816f6c45b4a541", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (1.2ms) [0m[34mGenerated URL for file at key: HvGufb3p4Q1ZJSMtcu7Aynjx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:31:10 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-26 01:31:11 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (11.7ms)
+  Rendered recipes/index.html.erb within layouts/application (12.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (1.2ms)
+Completed 200 OK in 35ms (Views: 33.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02cb978436b7ea2e989c8da1a516ad858e68eaeb/download.jpeg" for ::1 at 2019-08-26 01:31:11 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02cb978436b7ea2e989c8da1a516ad858e68eaeb", "filename"=>"download"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: AnpyRFVEKibVwtEpjoKXkwij (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozMjoxNC4wMDFaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c5625736a466834f6669447f37b46d8be3a07e9/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:31:11 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-26 01:31:11 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozMjoxNC4wMDFaIiwicHVyIjoiYmxvYl9rZXkifX0=--6c5625736a466834f6669447f37b46d8be3a07e9", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Processing by ActiveStorage::DiskController#show as JPEG
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0", "filename"=>"download"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-26 01:31:20 -0300
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:12
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:16
+  Rendered recipes/_form.html.erb (4.4ms)
+  Rendered recipes/new.html.erb within layouts/application (5.1ms)
+  Rendered shared/_nav.html.erb (0.7ms)
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-26 01:31:32 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G/arpYa+P1RSyUi1X1R/yLNCdA7qY27IeuHbQC1ipESvB50u8kNYO2ISPlhyA5MrAOSP5uCpIASHA44CnETI+Q==", "recipe"=>{"title"=>"Risotto de Cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Normal", "cook_time"=>"40", "ingredients"=>"asdafsf", "cook_method"=>"sdfsxcvcv"}, "commit"=>"Enviar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:29
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "cuisine_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Risotto de Cogumelos"], ["difficulty", "Normal"], ["cook_time", 40], ["ingredients", "asdafsf"], ["cook_method", "sdfsxcvcv"], ["created_at", "2019-08-26 04:31:32.770406"], ["updated_at", "2019-08-26 04:31:32.770406"], ["recipe_type_id", 1], ["cuisine_id", 1], ["user_id", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[35m (157.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+Redirected to http://localhost:3000/recipes/6
+Completed 302 Found in 165ms (ActiveRecord: 158.2ms)
+
+
+Started GET "/recipes/6" for ::1 at 2019-08-26 01:31:32 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  Rendered recipes/show.html.erb within layouts/application (7.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+     8: <h3> Detalhes </h3>
+     9: <p>
+    10:   <strong>Imagem da Receita</strong>
+    11:   <%= image_tag @recipe.picture%>
+    12: </p>
+    13: <p><%= @recipe.recipe_type.name %></p>
+    14: <p><%= @recipe.cuisine.name %></p>
+  
+app/views/recipes/show.html.erb:11:in `_app_views_recipes_show_html_erb___216588434269971551_69954481463980'
+Started POST "/recipes" for ::1 at 2019-08-26 01:31:51 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GSASRyjxCU/Xbma3FE0bUnLerZvaw2Zhz1a2ToTFxTQUbzEdyQry0zwXG5lpKYR5/2nsNo2LHot4vKmicVDnaQ==", "recipe"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f3f24a3c158 @tempfile=#<Tempfile:/tmp/RackMultipart20190826-25489-28ntce.jpg>, @original_filename="risotto-de-cogumelos-e-bacon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"recipe[picture]\"; filename=\"risotto-de-cogumelos-e-bacon.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Risotto de Cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Normal", "cook_time"=>"40", "ingredients"=>"asdafsf", "cook_method"=>"sdfsxcvcv"}, "commit"=>"Enviar"}
+[36m  Disk Storage (2.2ms) [0m[32mUploaded file to key: LJ1kBm8SjZ8gMwGtDQ9kTCX3 (checksum: u82+rQ8wUWLXcnM/Vc/4DA==)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "LJ1kBm8SjZ8gMwGtDQ9kTCX3"], ["filename", "risotto-de-cogumelos-e-bacon.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 38660], ["checksum", "u82+rQ8wUWLXcnM/Vc/4DA=="], ["created_at", "2019-08-26 04:31:51.097550"]]
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (87.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:29
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "cuisine_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Risotto de Cogumelos"], ["difficulty", "Normal"], ["cook_time", 40], ["ingredients", "asdafsf"], ["cook_method", "sdfsxcvcv"], ["created_at", "2019-08-26 04:31:51.199067"], ["updated_at", "2019-08-26 04:31:51.199067"], ["recipe_type_id", 1], ["cuisine_id", 1], ["user_id", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "picture"], ["record_type", "Recipe"], ["record_id", 7], ["blob_id", 6], ["created_at", "2019-08-26 04:31:51.201199"]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Update (0.1ms)[0m  [1m[33mUPDATE "recipes" SET "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["updated_at", "2019-08-26 04:31:51.201959"], ["id", 7]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[35m (85.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d9588500-86d1-4f5b-a840-871b51bb124f) to Async(default) with arguments: #<GlobalID:0x00007f3f25214920 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/6>>
+Redirected to http://localhost:3000/recipes/7
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 302 Found in 200ms (ActiveRecord: 174.5ms)
+
+
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f] Performing ActiveStorage::AnalyzeJob (Job ID: d9588500-86d1-4f5b-a840-871b51bb124f) from Async(default) with arguments: #<GlobalID:0x00007f3f25282790 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: LJ1kBm8SjZ8gMwGtDQ9kTCX3[0m
+Started GET "/recipes/7" for ::1 at 2019-08-26 01:31:51 -0300
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#show as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+  Parameters: {"id"=>"7"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   [1m[35m (78.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:74
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9588500-86d1-4f5b-a840-871b51bb124f] Performed ActiveStorage::AnalyzeJob (Job ID: d9588500-86d1-4f5b-a840-871b51bb124f) from Async(default) in 89.5ms
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:13
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:14
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:25
+  Rendered recipes/show.html.erb within layouts/application (7.2ms)
+  Rendered shared/_nav.html.erb (1.3ms)
+Completed 200 OK in 114ms (Views: 29.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7882152711e8f94a1baed2114b9029702ff7646/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:31:51 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7882152711e8f94a1baed2114b9029702ff7646", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: LJ1kBm8SjZ8gMwGtDQ9kTCX3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRURW94YTBKdE9GTnFXamhuVFhkSGRFUlJPV3RVUTFnekJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjo1MS40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--0871e48bb556e3a35f6b25abedf35e856be3d31c/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRURW94YTBKdE9GTnFXamhuVFhkSGRFUlJPV3RVUTFnekJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjo1MS40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--0871e48bb556e3a35f6b25abedf35e856be3d31c/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRURW94YTBKdE9GTnFXamhuVFhkSGRFUlJPV3RVUTFnekJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjo1MS40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--0871e48bb556e3a35f6b25abedf35e856be3d31c/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:31:51 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRURW94YTBKdE9GTnFXamhuVFhkSGRFUlJPV3RVUTFnekJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjo1MS40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--0871e48bb556e3a35f6b25abedf35e856be3d31c", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-26 01:31:52 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  Rendered recipes/_list.html.erb (16.3ms)
+  Rendered recipes/index.html.erb within layouts/application (17.3ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+     8:           <div class="row">
+     9: 
+    10:             <div class="col-sm">
+    11:               <%= image_tag recipe.picture, class:'img-thumbnail'%>
+    12:             </div>
+    13: 
+    14:             <div class="col-sm ">
+  
+app/views/recipes/_list.html.erb:11:in `block (2 levels) in _app_views_recipes__list_html_erb___532497162113489453_69954414678960'
+app/views/recipes/_list.html.erb:5:in `block in _app_views_recipes__list_html_erb___532497162113489453_69954414678960'
+app/views/recipes/_list.html.erb:2:in `_app_views_recipes__list_html_erb___532497162113489453_69954414678960'
+app/views/recipes/index.html.erb:1:in `_app_views_recipes_index_html_erb___2710442521560431968_69954414529900'
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Destroy (0.4ms)[0m  [1m[31mDELETE FROM "recipes" WHERE "recipes"."id" = ?[0m  [["id", 7]]
+  [1m[35m (562.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveStorage::Attachment Destroy (0.1ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = ?[0m  [["id", 6]]
+  [1m[35m (89.0ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 21add976-d859-44ef-b77c-3424c555127e) to Async(default) with arguments: #<GlobalID:0x00007f45884612c8 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/6>>
+  [1m[36mRecipe Load (19513.9ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e] Performing ActiveStorage::PurgeJob (Job ID: 21add976-d859-44ef-b77c-3424c555127e) from Async(default) with arguments: #<GlobalID:0x00007f45886589c8 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e]   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e]   [1m[36mActiveStorage::Attachment Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ? LIMIT ?[0m  [["blob_id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e]   [1m[36mActiveStorage::Blob Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 6]]
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e]   [1m[35m (100.8ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e] [36m  Disk Storage (0.1ms) [0m[31mDeleted file from key: LJ1kBm8SjZ8gMwGtDQ9kTCX3[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e] [36m  Disk Storage (0.0ms) [0m[31mDeleted files by key prefix: variants/LJ1kBm8SjZ8gMwGtDQ9kTCX3/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [21add976-d859-44ef-b77c-3424c555127e] Performed ActiveStorage::PurgeJob (Job ID: 21add976-d859-44ef-b77c-3424c555127e) from Async(default) in 122.51ms
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Destroy (0.4ms)[0m  [1m[31mDELETE FROM "recipes" WHERE "recipes"."id" = ?[0m  [["id", 6]]
+  [1m[35m (363.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2019-08-26 01:34:29 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (59.4ms)
+  Rendered recipes/index.html.erb within layouts/application (59.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (0.7ms)
+Completed 200 OK in 255ms (Views: 245.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b81c0d35668915119fb6aac7deac3c4be5f4a6eb/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:29 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b81c0d35668915119fb6aac7deac3c4be5f4a6eb", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-26 01:34:29 -0300
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Processing by ActiveStorage::DiskController#show as JPEG
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (1.9ms) [0m[34mGenerated URL for file at key: pF7hVdrinHh89ED6GVvZynhD (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0", "filename"=>"download"}
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Completed 302 Found in 12ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:29 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:29 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes/new" for ::1 at 2019-08-26 01:34:32 -0300
+Processing by RecipesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:12
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:16
+  Rendered recipes/_form.html.erb (4.9ms)
+  Rendered recipes/new.html.erb within layouts/application (5.6ms)
+  Rendered shared/_nav.html.erb (0.8ms)
+Completed 200 OK in 25ms (Views: 21.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/recipes" for ::1 at 2019-08-26 01:34:46 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sxzlKP6J2vIXF7c8fZ1G0WC4uyzdfsC787d09vIiIc4H7dOjinS9nSfMwdFQyqoy0x5AxNe0jncOVSG0QwRNcw==", "recipe"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f0fc412bcb0 @tempfile=#<Tempfile:/tmp/RackMultipart20190826-26026-az824b.jpg>, @original_filename="risotto-de-cogumelos-e-bacon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"recipe[picture]\"; filename=\"risotto-de-cogumelos-e-bacon.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Risotto de Cogumelos", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"40", "ingredients"=>"asdfsdf", "cook_method"=>"asdgsg"}, "commit"=>"Enviar"}
+[36m  Disk Storage (0.6ms) [0m[32mUploaded file to key: WMjRgsm8pdjVS1V8E2xExE8P (checksum: u82+rQ8wUWLXcnM/Vc/4DA==)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "WMjRgsm8pdjVS1V8E2xExE8P"], ["filename", "risotto-de-cogumelos-e-bacon.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 38660], ["checksum", "u82+rQ8wUWLXcnM/Vc/4DA=="], ["created_at", "2019-08-26 04:34:46.902129"]]
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (89.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:29
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "ingredients", "cook_method", "created_at", "updated_at", "recipe_type_id", "cuisine_id", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Risotto de Cogumelos"], ["difficulty", "Dificinho"], ["cook_time", 40], ["ingredients", "asdfsdf"], ["cook_method", "asdgsg"], ["created_at", "2019-08-26 04:34:47.000863"], ["updated_at", "2019-08-26 04:34:47.000863"], ["recipe_type_id", 1], ["cuisine_id", 1], ["user_id", 1]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "picture"], ["record_type", "Recipe"], ["record_id", 8], ["blob_id", 7], ["created_at", "2019-08-26 04:34:47.003228"]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[36mRecipe Update (0.1ms)[0m  [1m[33mUPDATE "recipes" SET "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["updated_at", "2019-08-26 04:34:47.004562"], ["id", 8]]
+  ↳ app/controllers/recipes_controller.rb:30
+  [1m[35m (88.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:30
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1dbea81a-2034-4a8e-a746-15c03f4afdfb) to Async(default) with arguments: #<GlobalID:0x00007f0fd6230ba8 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/7>>
+Redirected to http://localhost:3000/recipes/8
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 302 Found in 242ms (ActiveRecord: 179.6ms)
+
+
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb] Performing ActiveStorage::AnalyzeJob (Job ID: 1dbea81a-2034-4a8e-a746-15c03f4afdfb) from Async(default) with arguments: #<GlobalID:0x00007f0fd6261870 @uri=#<URI::GID gid://cookbook/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb] [36m  Disk Storage (0.4ms) [0m[34mDownloaded file from key: WMjRgsm8pdjVS1V8E2xExE8P[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/recipes/8" for ::1 at 2019-08-26 01:34:47 -0300
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   [1m[35m (76.4ms)[0m  [1m[36mcommit transaction[0m
+Processing by RecipesController#show as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb]   ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Parameters: {"id"=>"8"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1dbea81a-2034-4a8e-a746-15c03f4afdfb] Performed ActiveStorage::AnalyzeJob (Job ID: 1dbea81a-2034-4a8e-a746-15c03f4afdfb) from Async(default) in 84.2ms
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:13
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:14
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:25
+  Rendered recipes/show.html.erb within layouts/application (8.2ms)
+  Rendered shared/_nav.html.erb (1.3ms)
+Completed 200 OK in 54ms (Views: 40.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ecd9df412368e5047f65008ff5ab3f69914e6546/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:47 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ecd9df412368e5047f65008ff5ab3f69914e6546", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: WMjRgsm8pdjVS1V8E2xExE8P (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:47 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-26 01:34:49 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (18.4ms)
+  Rendered recipes/index.html.erb within layouts/application (19.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (1.2ms)
+Completed 200 OK in 56ms (Views: 53.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-26 01:34:49 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:49 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:34:49 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0", "filename"=>"download"}
+Processing by ActiveStorage::DiskController#show as JPEG
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.0ms)
+
+
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Processing by ActiveStorage::DiskController#show as JPEG
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-26 01:35:23 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (14.9ms)
+  Rendered recipes/index.html.erb within layouts/application (15.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (0.8ms)
+Completed 200 OK in 39ms (Views: 35.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-26 01:35:23 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:23 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0", "filename"=>"download"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:23 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:23 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes/8" for ::1 at 2019-08-26 01:35:47 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:13
+  [1m[36mCuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:14
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:25
+  Rendered recipes/show.html.erb within layouts/application (4.3ms)
+  Rendered shared/_nav.html.erb (0.8ms)
+Completed 200 OK in 35ms (Views: 32.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recipes/8/edit" for ::1 at 2019-08-26 01:35:47 -0300
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/recipe.rb:17
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  ↳ app/views/recipes/_form.html.erb:12
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  ↳ app/views/recipes/_form.html.erb:16
+  Rendered recipes/_form.html.erb (2.4ms)
+  Rendered recipes/edit.html.erb within layouts/application (3.1ms)
+  Rendered shared/_nav.html.erb (0.7ms)
+Completed 200 OK in 24ms (Views: 20.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/recipes/8" for ::1 at 2019-08-26 01:35:56 -0300
+Processing by RecipesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0H9T1X8s6kUageH7ZQ/ldC1LvLGUBisM6viYg3qxRtNLmXWulwoWQn1q9kF85BXc27a56OIadg438d8lfXW/Gw==", "recipe"=>{"title"=>"Risotto veggie", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Dificinho", "cook_time"=>"40", "ingredients"=>"asdfsdf", "cook_method"=>"asdgsg"}, "commit"=>"Enviar", "id"=>"8"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[36mRecipe Update (0.3ms)[0m  [1m[33mUPDATE "recipes" SET "title" = ?, "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["title", "Risotto veggie"], ["updated_at", "2019-08-26 04:35:56.209048"], ["id", 8]]
+  ↳ app/controllers/recipes_controller.rb:36
+  [1m[35m (455.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:36
+Redirected to http://localhost:3000/recipes/8
+Completed 302 Found in 465ms (ActiveRecord: 455.9ms)
+
+
+Started GET "/recipes/8" for ::1 at 2019-08-26 01:35:56 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:74
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:12
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:13
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.erb:14
+  [1m[36mRecipeList Load (0.1ms)[0m  [1m[34mSELECT "recipe_lists".* FROM "recipe_lists" WHERE "recipe_lists"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/recipes/show.html.erb:25
+  Rendered recipes/show.html.erb within layouts/application (6.0ms)
+  Rendered shared/_nav.html.erb (0.6ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:56 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOTo0Ny4yODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--8f49439f94fc7ae5480fb48ab2f716a082d72144", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-26 01:35:58 -0300
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (10.8ms)
+  Rendered recipes/index.html.erb within layouts/application (11.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (0.9ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-26 01:35:58 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:58 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-26 01:35:58 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozOToyOS43MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--288bbb1d63cbe8fccd08fac9b9129ff03a3a86c0", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI2VDA0OjM2OjExLjc3N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8b7bad0e8997689a8866db992d20edee40544cf0", "filename"=>"download"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yNlQwNDozNjoxMC4xNDlaIiwicHVyIjoiYmxvYl9rZXkifX0=--a37dfc98b6d8ef887dfb6dd8ead51fd9d8650aec", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-27 20:02:00 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/_list.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:11
+  [1m[36mCACHE RecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:17
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/_list.html.erb:18
+  Rendered recipes/_list.html.erb (89.3ms)
+  Rendered recipes/index.html.erb within layouts/application (89.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered shared/_nav.html.erb (0.7ms)
+Completed 200 OK in 581ms (Views: 566.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02cb978436b7ea2e989c8da1a516ad858e68eaeb/download.jpeg" for ::1 at 2019-08-27 20:02:01 -0300
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b81c0d35668915119fb6aac7deac3c4be5f4a6eb/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b81c0d35668915119fb6aac7deac3c4be5f4a6eb", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02cb978436b7ea2e989c8da1a516ad858e68eaeb", "filename"=>"download"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (11.7ms) [0m[34mGenerated URL for file at key: pF7hVdrinHh89ED6GVvZynhD (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--5693923c47f4e64634c80f3e5068f6e181bb27e4/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: AnpyRFVEKibVwtEpjoKXkwij (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI3VDIzOjA3OjAxLjQ2N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8c6d907b73eaf934e8277a44d43e0a2141a86ec9/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--5693923c47f4e64634c80f3e5068f6e181bb27e4/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI3VDIzOjA3OjAxLjQ2N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8c6d907b73eaf934e8277a44d43e0a2141a86ec9/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg
+Completed 302 Found in 25ms (ActiveRecord: 0.2ms)
+
+
+Completed 302 Found in 24ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI3VDIzOjA3OjAxLjQ2N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8c6d907b73eaf934e8277a44d43e0a2141a86ec9/download.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22download.jpeg%22%3B+filename%2A%3DUTF-8%27%27download.jpeg" for ::1 at 2019-08-27 20:02:01 -0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--5693923c47f4e64634c80f3e5068f6e181bb27e4/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"download.jpeg\"; filename*=UTF-8''download.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRVzV3ZVZKR1ZrVkxhV0pXZDNSRmNHcHZTMWhyZDJscUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkZhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlaRzkzYm14dllXUXVhbkJsWnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpHOTNibXh2WVdRdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDE5LTA4LTI3VDIzOjA3OjAxLjQ2N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8c6d907b73eaf934e8277a44d43e0a2141a86ec9", "filename"=>"download"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRjRVkzYUZaa2NtbHVTR2c0T1VWRU5rZFdkbHA1Ym1oRUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--5693923c47f4e64634c80f3e5068f6e181bb27e4", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c32da96c30f9caf32b6f98948e816f6c45b4a541/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c32da96c30f9caf32b6f98948e816f6c45b4a541", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: HvGufb3p4Q1ZJSMtcu7Aynjx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--98f6c18e733c670a6402e97641f5c0b3a220a865/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--98f6c18e733c670a6402e97641f5c0b3a220a865/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--98f6c18e733c670a6402e97641f5c0b3a220a865/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTSFpIZFdaaU0zQTBVVEZhU2xOTmRHTjFOMEY1Ym1wNEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--98f6c18e733c670a6402e97641f5c0b3a220a865", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ecd9df412368e5047f65008ff5ab3f69914e6546/risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ecd9df412368e5047f65008ff5ab3f69914e6546", "filename"=>"risotto-de-cogumelos-e-bacon"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /home/marcelo/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: WMjRgsm8pdjVS1V8E2xExE8P (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTlaIiwicHVyIjoiYmxvYl9rZXkifX0=--e1ac918bf9d2dc36844a2d83156625ee94086b06/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTlaIiwicHVyIjoiYmxvYl9rZXkifX0=--e1ac918bf9d2dc36844a2d83156625ee94086b06/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTlaIiwicHVyIjoiYmxvYl9rZXkifX0=--e1ac918bf9d2dc36844a2d83156625ee94086b06/risotto-de-cogumelos-e-bacon.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22risotto-de-cogumelos-e-bacon.jpg%22%3B+filename%2A%3DUTF-8%27%27risotto-de-cogumelos-e-bacon.jpg" for ::1 at 2019-08-27 20:02:01 -0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"risotto-de-cogumelos-e-bacon.jpg\"; filename*=UTF-8''risotto-de-cogumelos-e-bacon.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWMDFxVW1kemJUaHdaR3BXVXpGV09FVXllRVY0UlRoUUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSnJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbWx6YjNSMGJ5MWtaUzFqYjJkMWJXVnNiM010WlMxaVlXTnZiaTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozSnBjMjkwZEc4dFpHVXRZMjluZFcxbGJHOXpMV1V0WW1GamIyNHVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wOC0yN1QyMzowNzowMS40OTlaIiwicHVyIjoiYmxvYl9rZXkifX0=--e1ac918bf9d2dc36844a2d83156625ee94086b06", "filename"=>"risotto-de-cogumelos-e-bacon"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+

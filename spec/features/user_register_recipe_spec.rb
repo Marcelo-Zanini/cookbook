@@ -20,29 +20,30 @@ feature 'User register recipe' do
     end
 
     click_on 'Enviar uma receita'
-
-    fill_in 'Título', with: 'Tabule'
-    select 'Entrada', from: 'Tipo da Receita'
-    select 'Arabe', from: 'Cozinha'
+    attach_file('Imagem', "spec/files/images/bolo_cenoura.jpg")
+    fill_in 'Título', with: 'Bolo de cenoura'
+    select 'Sobremesa', from: 'Tipo da Receita'
+    select 'Brasileira', from: 'Cozinha'
     fill_in 'Dificuldade', with: 'Fácil'
     fill_in 'Tempo de Preparo', with: '45'
-    fill_in 'Ingredientes', with: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha'
-    fill_in 'Como Preparar', with: 'Misturar tudo e servir, Adicione limão a gosto.'
+    fill_in 'Ingredientes', with: 'Farinha, açucar, cenoura'
+    fill_in 'Como Preparar', with: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes'
     click_on 'Enviar'
 
 
     # expectativas
-    expect(page).to have_css('h2', text: "Receita enviada por #{user.email}")
-    expect(page).to have_css('h3', text: 'Tabule')
+    expect(page).to have_css("img[src*='bolo_cenoura.jpg']")
+    expect(page).to have_css('h4', text: "Receita enviada por #{user.email}")
+    expect(page).to have_css('h3', text: 'Bolo de cenoura')
     expect(page).to have_css('h3', text: 'Detalhes')
-    expect(page).to have_css('p', text: 'Entrada')
-    expect(page).to have_css('p', text: 'Arabe')
+    expect(page).to have_css('p', text: 'Sobremesa')
+    expect(page).to have_css('p', text: 'Brasileira')
     expect(page).to have_css('p', text: 'Fácil')
     expect(page).to have_css('p', text: "45 minutos")
     expect(page).to have_css('h3', text: 'Ingredientes')
-    expect(page).to have_css('p', text: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha')
+    expect(page).to have_css('p', text: 'Farinha, açucar, cenoura')
     expect(page).to have_css('h3', text: 'Como Preparar')
-    expect(page).to have_css('p', text:  'Misturar tudo e servir, adicione limão a gosto.')
+    expect(page).to have_css('p', text:  'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
   end
 
   scenario 'and must fill in all fields' do
@@ -70,7 +71,38 @@ feature 'User register recipe' do
 
     expect(page).to have_content('Não foi possível salvar a receita')
   end
-  scenario 'and must be logged in' do
+  scenario 'and new recipe is pending for validation' do
+    #cria os dados necessários, nesse caso não vamos criar dados no banco
+    RecipeType.create(name: 'Sobremesa')
+    RecipeType.create(name: 'Entrada')
+    Cuisine.create(name: 'Brasileira')
+    Cuisine.create(name: 'Arabe')
+    user = User.create(email: 'marcelo@teste.com', password: '123456')
 
+    # simula a ação do usuário
+    visit root_path
+    click_on 'Entrar'
+
+    within('.formulario') do
+      fill_in 'Email', with: user.email
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
+
+    click_on 'Enviar uma receita'
+    attach_file('Imagem', "spec/files/images/bolo_cenoura.jpg")
+    fill_in 'Título', with: 'Bolo de cenoura'
+    select 'Sobremesa', from: 'Tipo da Receita'
+    select 'Brasileira', from: 'Cozinha'
+    fill_in 'Dificuldade', with: 'Fácil'
+    fill_in 'Tempo de Preparo', with: '45'
+    fill_in 'Ingredientes', with: 'Farinha, açucar, cenoura'
+    fill_in 'Como Preparar', with: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes'
+    click_on 'Enviar'
+
+
+    # expectativas
+    expect(page).to have_ccontent('Receita Aguardando Aprovação')
+    expect(page).to have_css('h3', text: 'Bolo de cenoura')
   end
 end

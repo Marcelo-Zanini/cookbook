@@ -3,7 +3,10 @@
 <%if @recipe.pending? %>
   <p>Receita Aguardando Aprovação</p>
 <% end %>
-
+<%if current_user && current_user.admin?%>
+  <%= link_to 'Ativar', activate_recipe_path(@recipe), method: :post %>
+  <%= link_to 'Rejeitar', reject_recipe_path(@recipe), method: :post %>
+<% end %>
 <h4>
   Receita enviada por <%= @recipe.user.email %>
 <%if current_user == @recipe.user %>

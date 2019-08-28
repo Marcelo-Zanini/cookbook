@@ -10,7 +10,7 @@ feature 'User update recipe' do
     Cuisine.create(name: 'Arabe')
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50,
+                  user: user, cook_time: 50, status: :active,
                   ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -50,7 +50,7 @@ feature 'User update recipe' do
     cuisine = Cuisine.create(name: 'Brasileira')
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50,
+                  user: user, cook_time: 50, status: :active,
                   ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -82,7 +82,7 @@ feature 'User update recipe' do
     cuisine = Cuisine.create(name: 'Brasileira')
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50,
+                  user: user, cook_time: 50, status: :active,
                   ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     #act
@@ -99,7 +99,7 @@ feature 'User update recipe' do
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
-                  user: other_user, cook_time: 50,
+                  user: other_user, cook_time: 50, status: :active,
                   ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     #act

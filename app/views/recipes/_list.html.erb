@@ -2,7 +2,7 @@
   <% @recipes.each do |recipe| %>
 
     <div class="col-sm-6">
-      <%= link_to(recipe, class:'text-decoration-none text-dark ') do %>
+      <%= link_to(recipe, class: ' text-decoration-none text-dark ',id: "recipe-#{recipe.id}") do %>
       <div class="card bg-light mb-5">
         <div class="card-body clearfix">
           <div class="row">

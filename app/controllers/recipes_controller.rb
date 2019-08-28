@@ -1,10 +1,16 @@
 class RecipesController < ApplicationController
-  before_action :find_recipe, only: %i[show edit update add_to_list]
+  before_action :find_recipe, only: %i[show edit update add_to_list activate reject]
   before_action :set_collections, only: %i[new edit]
-  before_action :authenticate_user!, only: %i[new edit my]
+  before_action :authenticate_user!, only: %i[new edit my pending activate reject]
+  before_action :authorize_admin, only: %i[pending activate reject]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.active
+  end
+
+  def search
+    @recipes = Recipe.where("title LIKE ?", "%#{params[:term]}%")
+    flash.now[:alert] = 'Receita não encontrada' if @recipes.empty?
   end
 
   def show
@@ -58,11 +64,21 @@ class RecipesController < ApplicationController
     redirect_to recipe_list_path if list_item.destroy
   end
 
-  def search
-    @recipes = Recipe.where("title LIKE ?", "%#{params[:term]}%")
-    flash.now[:alert] = 'Receita não encontrada' if @recipes.empty?
+  def pending
+    @recipes = Recipe.pending
   end
 
+  def activate
+    @recipe.active!
+    flash[:notice] = 'Receita Validada com Sucesso'
+    redirect_to pending_recipes_path
+  end
+
+  def reject
+    @recipe.rejected!
+    flash[:notice] = 'Receita Rejeitada com Sucesso'
+    redirect_to pending_recipes_path
+  end
   private
 
   def set_params
@@ -83,5 +99,9 @@ class RecipesController < ApplicationController
     set_collections
     flash.now[:alert] = 'Não foi possível salvar a receita'
     render view
+  end
+
+  def authorize_admin
+    return redirect_to root_path unless current_user.admin?
   end
 end

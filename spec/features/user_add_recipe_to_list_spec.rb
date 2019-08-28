@@ -9,7 +9,7 @@ feature 'User add recipe to list' do
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
+                           user: user, cook_time: 50, status: :active,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     #act
@@ -37,7 +37,7 @@ feature 'User add recipe to list' do
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
+                           user: user, cook_time: 50, status: :active,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     list_item = ListItem.create(recipe: recipe, recipe_list: recipe_list)

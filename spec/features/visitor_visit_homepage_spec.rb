@@ -14,7 +14,7 @@ feature 'Visitor visit homepage' do
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
+                           user: user, cook_time: 50, status: :active,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -38,15 +38,14 @@ feature 'Visitor visit homepage' do
     another_cuisine = Cuisine.create(name: 'Australiana')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
+                           user: user, cook_time: 50, status: :active,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-
     another_recipe = Recipe.create(title: 'Feijoada',
                                    recipe_type: another_recipe_type,
                                    cuisine: another_cuisine,
                                    difficulty: 'Difícil',
-                                   user: user, cook_time: 50,
+                                   user: user, cook_time: 50, status: :active,
                                    ingredients: 'Feijão e carnes',
                                    cook_method: 'Misture o feijão com as carnes')
 

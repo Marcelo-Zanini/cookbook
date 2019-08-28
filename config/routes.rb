@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   resources :cuisines, only: %i[show new create]
   resources :recipe_lists, only: %i[index new create show]
   resources :recipes, only: %i[show new create edit update my] do
+    get 'search', on: :collection
+    get 'my', on: :collection
+    get 'pending', on: :collection
     post 'add_to_list', on: :member
+    post 'activate', on: :member
+    post 'reject', on: :member
     delete 'remove_from_list', on: :member
   end
-  get 'my_recipes', to: 'recipes#my'
-  get 'search', to: 'recipes#search'
 end

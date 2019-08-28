@@ -19,4 +19,11 @@ class Recipe < ApplicationRecord
     return true if self.user == user
     false
   end
+
+  def img
+    return 'default_image.jpg' unless self.picture.attached?
+
+    self.picture
+  end
+
 end

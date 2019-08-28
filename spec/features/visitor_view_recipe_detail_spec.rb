@@ -43,7 +43,7 @@ feature 'Visitor view recipe details' do
     # simula a ação do usuário
     visit root_path
     click_on recipe.title
-    click_on 'Voltar'
+    click_on 'CookBook'
 
     # expectativa da rota atual
     expect(current_path).to eq(root_path)

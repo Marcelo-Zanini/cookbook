@@ -6,7 +6,7 @@ feature 'Admin register recipe_type' do
 
     #act
     visit root_path
-    click_on 'Enviar tipo de receita'
+    click_on 'Enviar Tipo de Receita'
     fill_in 'Nome', with: 'Prato Principal'
     click_on 'Enviar'
 
@@ -17,7 +17,7 @@ feature 'Admin register recipe_type' do
   scenario 'and must fill name field' do
     #arranje
     visit root_path
-    click_on 'Enviar tipo de receita'
+    click_on 'Enviar Tipo de Receita'
     fill_in 'Nome', with: ''
     click_on 'Enviar'
 
@@ -32,7 +32,7 @@ feature 'Admin register recipe_type' do
 
     #act
     visit root_path
-    click_on 'Enviar tipo de receita'
+    click_on 'Enviar Tipo de Receita'
     fill_in 'Nome', with: 'Sobremesa'
     click_on 'Enviar'
 

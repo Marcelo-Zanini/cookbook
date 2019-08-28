@@ -18,8 +18,8 @@ feature 'User view and register recipe list' do
     fill_in 'Nome', with: 'Gostosuras ou Travessuras'
     click_on 'Enviar'
     #assert
-    expect(page).to have_css('h2',text:'Gostosuras ou Travessuras')
-    expect(page).to have_css('h3',text:'Esta lista ainda esta vazia')
+    expect(page).to have_css('h3',text:'Gostosuras ou Travessuras')
+    expect(page).to have_css('h4',text:'Esta lista ainda esta vazia')
   end
 
   scenario 'only view lists' do
@@ -40,8 +40,8 @@ feature 'User view and register recipe list' do
     end
     click_on 'Minhas Listas'
     #assert
-    expect(page).to have_css('h2',text: recipe_list.name)
-    expect(page).to have_css('h2',text: another_recipe_list.name)
+    expect(page).to have_css('h3',text: recipe_list.name)
+    expect(page).to have_css('h3',text: another_recipe_list.name)
     expect(page).not_to have_content(other_recipe_list.name)
 
   end
@@ -88,8 +88,8 @@ feature 'User view and register recipe list' do
     fill_in 'Nome', with: other_recipe_list.name
     click_on 'Enviar'
     #assert
-    expect(page).to have_css('h2',text: other_recipe_list.name)
-    expect(page).to have_css('h3',text:'Esta lista ainda esta vazia')
+    expect(page).to have_css('h3',text: other_recipe_list.name)
+    expect(page).to have_css('h4',text:'Esta lista ainda esta vazia')
   end
 
   scenario 'and has no lists' do
@@ -106,7 +106,7 @@ feature 'User view and register recipe list' do
     end
     click_on 'Minhas Listas'
     #assert
-    expect(page).to have_css('h2', text:'Você ainda não possui nenhuma lista')
+    expect(page).to have_css('h3', text:'Você ainda não possui nenhuma lista')
     expect(page).to have_link('Nova Lista')
   end
   scenario 'and must be logged in' do

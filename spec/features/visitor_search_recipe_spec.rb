@@ -23,7 +23,7 @@ feature 'Visitor search recipe' do
                                    cook_method: 'Misture o feijão com as carnes')
     # act
     visit root_path
-    fill_in 'Busca', with: recipe.title
+    fill_in 'Pesquise Receitas Aqui', with: recipe.title
     click_on 'Buscar'
     #assert
     expect(page).to have_css('h3', text: recipe.title)
@@ -51,7 +51,7 @@ feature 'Visitor search recipe' do
                                    cook_method: 'Misture o feijão com as carnes')
     # act
     visit root_path
-    fill_in 'Busca', with: 'Bolo de fubá'
+    fill_in 'Pesquise Receitas Aqui', with: 'Bolo de fubá'
     click_on 'Buscar'
     #assert
     expect(page).not_to have_content(recipe.title)
@@ -86,7 +86,7 @@ feature 'Visitor search recipe' do
                                     cook_method: 'Misture o feijão com as carnes')
     # act
     visit root_path
-    fill_in 'Busca', with: 'Bolo'
+    fill_in 'Pesquise Receitas Aqui', with: 'Bolo'
     click_on 'Buscar'
     #assert
     expect(page).to have_css('h3', text: recipe.title)

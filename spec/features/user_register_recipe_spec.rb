@@ -102,7 +102,7 @@ feature 'User register recipe' do
 
 
     # expectativas
-    expect(page).to have_ccontent('Receita Aguardando Aprovação')
+    expect(page).to have_content('Receita Aguardando Aprovação')
     expect(page).to have_css('h3', text: 'Bolo de cenoura')
   end
 end

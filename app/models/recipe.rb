@@ -9,6 +9,8 @@ class Recipe < ApplicationRecord
   validates :title, :difficulty, :cook_time, :picture,
    :ingredients, :cook_method, presence: {message:'é campo obrigatório'}
 
+  enum status: {pending: 0, active: 1, rejected: 70}
+
   def cook_time_min
     "#{cook_time} minutos"
   end

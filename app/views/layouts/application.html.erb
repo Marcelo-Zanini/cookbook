@@ -10,23 +10,7 @@
   </head>
 
   <body>
-    <header class = "bg-dark text-light">
-      <div class="container clearfix">
-          <div class=" mt-2 mb-0 float-left">
-            <h1> <%= link_to 'CookBook', root_path, class: "text-decoration-none text-light"%> </h1>
-          </div>
-          <div class="mt-4 mb-0 float-right">
-            <% if user_signed_in? %>
-              <p>Olá, <%= current_user.email %>
-              <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
-              </p>
-            <% else %>
-              <%= link_to 'Entrar', new_user_session_path %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </header>
+    <%= render 'shared/header' %>
     <%= render 'shared/nav' %>
     <main class="container">
       <p class=" text-warning"> <%= flash[:alert] %></p>

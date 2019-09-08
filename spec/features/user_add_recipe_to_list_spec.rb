@@ -13,14 +13,9 @@ feature 'User add recipe to list' do
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on recipe.title
     select recipe_list.name, from: 'Minhas Listas'
     click_on 'Adicionar à Lista'

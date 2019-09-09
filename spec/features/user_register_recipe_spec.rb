@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'User register recipe' do
   scenario 'successfully' do

@@ -3,16 +3,11 @@ require 'rails_helper'
 feature 'User view and register recipe list' do
   scenario 'successfully' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
+    user = create(:user)
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Listas'
     click_on 'Nova Lista'
     fill_in 'Nome', with: 'Gostosuras ou Travessuras'
@@ -24,20 +19,15 @@ feature 'User view and register recipe list' do
 
   scenario 'only view lists' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    another_recipe_list = RecipeList.create(user: user, name: 'Gordices')
-    other_user = User.create(email: 'gere@teste.com', password: '123456')
-    other_recipe_list = RecipeList.create(user: other_user, name: 'Travessuras')
+    user = create(:user)
+    recipe_list = create(:recipe_list, user: user, name: 'Gostosuras')
+    another_recipe_list = create(:recipe_list, user: user, name: 'Gordices')
+    other_user = create(:user)
+    other_recipe_list = create(:recipe_list, user: other_user, name: 'Travessuras')
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Listas'
     #assert
     expect(page).to have_css('h3',text: recipe_list.name)
@@ -48,17 +38,11 @@ feature 'User view and register recipe list' do
 
   scenario 'and must have unique name ' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
+    user = create(:user)
+    recipe_list = create(:recipe_list, user: user, name: 'Gostosuras')
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Listas'
     click_on 'Nova Lista'
     fill_in 'Nome', with: recipe_list.name
@@ -70,19 +54,14 @@ feature 'User view and register recipe list' do
   end
   scenario 'and must have unique name only for same user' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    other_user = User.create(email: 'gere@teste.com', password: '123456')
-    other_recipe_list = RecipeList.create(user: other_user, name: 'Travessuras')
+    user = create(:user)
+    recipe_list = create(:recipe_list, user: user, name: 'Gostosuras')
+    other_user = create(:user)
+    other_recipe_list = create(:recipe_list, user: other_user, name: 'Travessuras')
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Listas'
     click_on 'Nova Lista'
     fill_in 'Nome', with: other_recipe_list.name
@@ -94,16 +73,10 @@ feature 'User view and register recipe list' do
 
   scenario 'and has no lists' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
+    user = create(:user)
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Listas'
     #assert
     expect(page).to have_css('h3', text:'Você ainda não possui nenhuma lista')

@@ -1,5 +1,5 @@
 require 'rails_helper'
-FactoryBot.find_definitions
+
 
 feature 'Admin register recipe_type' do
   scenario 'successfully' do

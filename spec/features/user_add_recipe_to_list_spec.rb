@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'User add recipe to list' do
   scenario 'successfully' do

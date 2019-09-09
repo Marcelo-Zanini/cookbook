@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'Visitor view recipe details' do
   scenario 'successfully' do

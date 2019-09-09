@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-FactoryBot.find_definitions
 
 feature 'User logs in' do
   scenario 'succesfully' do

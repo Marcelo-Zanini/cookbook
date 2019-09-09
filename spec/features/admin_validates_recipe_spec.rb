@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'admin validates pending recipe' do
   scenario 'and activates it' do

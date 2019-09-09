@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'User remove recipe from list' do
     scenario 'successfully' do

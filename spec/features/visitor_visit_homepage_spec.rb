@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'Visitor visit homepage' do
   scenario 'successfully' do

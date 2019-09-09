@@ -1,5 +1,4 @@
 require 'rails_helper'
-FactoryBot.find_definitions
 
 feature 'Visitor search recipe' do
   scenario 'by full title succesfully' do

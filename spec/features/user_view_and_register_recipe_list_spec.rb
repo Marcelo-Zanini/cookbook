@@ -66,7 +66,7 @@ feature 'User view and register recipe list' do
     #assert
     expect(page).not_to have_content(recipe_list.name)
     expect(page).to have_content('Não foi possível criar lista')
-    expect(page).to have_content('Name deve ser único')
+    expect(page).to have_content('Nome já está em uso')
   end
   scenario 'and must have unique name only for same user' do
     #arrange

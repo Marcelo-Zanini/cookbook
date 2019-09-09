@@ -1,6 +1,6 @@
 <h3><%= @recipe_list.name %></h3>
 <% if @recipe_list.recipes.empty? %>
- <h4>Esta lista ainda esta vazia</h4>
+ <h4><%= t(:empty_list)%></h4>
 <% end %>
 <% @recipe_list.recipes.each do |recipe| %>
   <div id="recipe<%= recipe.id %>">

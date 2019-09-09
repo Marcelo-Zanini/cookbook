@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    redirect_to @recipe unless @recipe.owner? current_user
+    redirect_to root_path unless @recipe.owner? current_user
   end
 
   def create

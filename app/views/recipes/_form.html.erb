@@ -1,37 +1,37 @@
 <%= form_for @recipe do |f| %>
 <div>
-  <%= f.label :picture, 'Imagem' %>
+  <%= f.label :picture %>
   <%= f.file_field :picture %>
 </div>
 <div>
-  <%= f.label :title, 'Título' %>
+  <%= f.label :title %>
   <%= f.text_field :title %>
 </div>
 <div>
-  <%= f.label :recipe_type_id, 'Tipo da Receita' %>
+  <%= f.label :recipe_type_id %>
   <%= f.collection_select(:recipe_type_id, @recipe_types, :id, :name) %>
 </div>
 <div>
-  <%= f.label :cuisine_id, 'Cozinha' %>
+  <%= f.label :cuisine_id %>
   <%= f.collection_select(:cuisine_id, @cuisines, :id, :name) %>
 </div>
 <div>
-  <%= f.label :difficulty, 'Dificuldade' %>
+  <%= f.label :difficulty %>
   <%= f.text_field :difficulty %>
 </div>
 <div>
-  <%= f.label :cook_time, 'Tempo de Preparo' %>
+  <%= f.label :cook_time %>
   <%= f.number_field :cook_time %>
 </div>
 <div>
-  <%= f.label :ingredients, 'Ingredientes' %>
+  <%= f.label :ingredients %>
   <%= f.text_area :ingredients %>
 </div>
 <div>
-  <%= f.label :cook_method, 'Como Preparar' %>
+  <%= f.label :cook_method %>
   <%= f.text_area :cook_method %>
 </div>
 <div>
-  <%= f.submit 'Enviar' %>
+  <%= f.submit t(:send) %>
 </div>
 <% end %>

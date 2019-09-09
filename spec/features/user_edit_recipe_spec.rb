@@ -1,37 +1,30 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'User update recipe' do
   scenario 'successfully' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    RecipeType.create(name: 'Entrada')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    Cuisine.create(name: 'Arabe')
-    Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50, status: :active,
-                  ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-
+    user = create(:user)
+    recipe_type = create(:recipe_type, name: 'Sobremesa')
+    cuisine = create(:cuisine, name: 'Brasileira')
+    recipe = create(:recipe, title: 'Bolodecenoura', user: user,
+                    cuisine: cuisine, recipe_type: recipe_type)
+    recipe.active!
+    create(:recipe_type, name: 'Entrada')
+    create(:cuisine, name: 'Arabe')
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Bolodecenoura'
     click_on 'Editar'
 
     fill_in 'Título', with: 'Bolo de cenoura'
-    select 'Entrada', from: 'Tipo da Receita'
+    select 'Entrada', from: 'Tipo de Receita'
     select 'Arabe', from: 'Cozinha'
     fill_in 'Dificuldade', with: 'Médio'
     fill_in 'Tempo de Preparo', with: '45'
     fill_in 'Ingredientes', with: 'Cenoura, farinha, ovo, oleo de soja e chocolate'
-    fill_in 'Como Preparar', with: 'Faça um bolo e uma cobertura de chocolate'
+    fill_in 'Método de Preparo', with: 'Faça um bolo e uma cobertura de chocolate'
 
     click_on 'Enviar'
     #assert
@@ -45,23 +38,13 @@ feature 'User update recipe' do
 
   scenario 'and must fill in all fields' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50, status: :active,
-                  ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-
+    user = create(:user)
+    recipe = create(:recipe, title: 'Bolodecenoura',user: user)
+    recipe.active!
     # act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
+
     click_on 'Bolodecenoura'
     click_on 'Editar'
 
@@ -69,7 +52,7 @@ feature 'User update recipe' do
     fill_in 'Dificuldade', with: ''
     fill_in 'Tempo de Preparo', with: ''
     fill_in 'Ingredientes', with: ''
-    fill_in 'Como Preparar', with: ''
+    fill_in 'Método de Preparo', with: ''
     click_on 'Enviar'
     #assert
     expect(page).to have_content('Não foi possível salvar a receita')
@@ -77,41 +60,24 @@ feature 'User update recipe' do
 
   scenario 'And must be logged in' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: cuisine,
-                  user: user, cook_time: 50, status: :active,
-                  ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    recipe = create(:recipe, title: 'Bolo de Cenoura')
+    recipe.active!
     #act
     visit root_path
-    click_on 'Bolodecenoura'
+    click_on 'Bolo de Cenoura'
     #assert
     expect(page).not_to have_link('Editar')
   end
   scenario 'and must be recipe owner' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    other_user = User.create(email: 'gere@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: cuisine,
-                  user: other_user, cook_time: 50, status: :active,
-                  ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    user =create(:user, email: 'marcelo@teste.com')
+    other_user = create(:user, email: 'gere@teste.com')
+    recipe = create(:recipe, title: 'Bolodecenoura', user: other_user)
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     visit edit_recipe_path(recipe.id)
     #assert
-    expect(current_path).to eq recipe_path(recipe.id)
+    expect(current_path).to eq root_path
   end
 end

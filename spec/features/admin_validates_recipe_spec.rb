@@ -1,17 +1,10 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'admin validates pending recipe' do
   scenario 'and activates it' do
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    admin = User.create(email: 'gere@teste.com', password: '123456', admin: true)
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    admin = create(:admin)
+    recipe =  create(:recipe)
      #act
      login_as(admin, scope: :user)
      visit root_path
@@ -25,16 +18,9 @@ feature 'admin validates pending recipe' do
   end
 
   scenario 'and rejects it' do
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    admin = User.create(email: 'gere@teste.com', password: '123456', admin: true)
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+
+    admin = create(:admin)
+    recipe = create(:recipe)
      #act
      login_as(admin, scope: :user)
      visit root_path
@@ -49,15 +35,8 @@ feature 'admin validates pending recipe' do
 
   scenario 'and must be admin' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    user = create(:user, email: 'user@mail.com')
+    recipe = create(:recipe, title: 'Bolo de Cenoura')
     #act
     login_as(user, scope: :user)
     visit root_path
@@ -65,17 +44,11 @@ feature 'admin validates pending recipe' do
     expect(page).not_to have_link('Receitas Pendentes')
     expect(page).not_to have_content('Bolo de cenoura')
   end
+
   scenario 'and must be admin to access link' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    user = create(:user, email: 'user@mail.com')
+    recipe = create(:recipe, title: 'Bolo de Cenoura')
     #act
     login_as(user, scope: :user)
     visit pending_recipes_path
@@ -83,7 +56,6 @@ feature 'admin validates pending recipe' do
     expect(current_path).to eq root_path
     expect(page).not_to have_link('Ativar')
     expect(page).not_to have_link('Rejeitar')
-    expect(page).not_to have_link('Receitas Pendentes')
     expect(page).not_to have_content('Bolo de cenoura')
   end
 end

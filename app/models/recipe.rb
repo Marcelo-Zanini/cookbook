@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   has_one_attached :picture
 
   validates :title, :difficulty, :cook_time, :picture,
-   :ingredients, :cook_method, presence: {message:'é campo obrigatório'}
+   :ingredients, :cook_method, presence: true
 
   enum status: {pending: 0, active: 1, rejected: 70}
 

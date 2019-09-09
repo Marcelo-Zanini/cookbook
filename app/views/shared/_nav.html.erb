@@ -8,9 +8,9 @@
     <div class="form_group form-control-sm mb-2">
       <%= form_tag search_recipes_path, method: :get do %>
         <div class="input-group ">
-          <%= text_field_tag :term, '',placeholder:'Pesquise Receitas Aqui' %>
+          <%= text_field_tag :term, '',placeholder:t(:search_here) %>
           <div class="input-group-append">
-            <%= submit_tag 'Buscar', class:'btn btn-secondary' %>
+            <%= submit_tag t(:search), class:'btn btn-secondary' %>
           </div>
         </div>
       <% end %>
@@ -26,30 +26,30 @@
           <% if user_signed_in? %>
 
             <li class="nav-item">
-              <%= link_to 'Enviar uma receita', new_recipe_path, class:"nav-link " %>
+              <%= link_to t(:new_recipe), new_recipe_path, class:"nav-link " %>
             </li>
 
             <li class="nav-item">
-              <%= link_to 'Minhas Receitas', my_recipes_path, class:"nav-link " %>
+              <%= link_to t(:my_recipes), my_recipes_path, class:"nav-link " %>
             </li>
 
             <li class="nav-item">
-              <%= link_to 'Minhas Listas', recipe_lists_path, class:"nav-link" %>
+              <%= link_to t(:my_lists), recipe_lists_path, class:"nav-link" %>
             </li>
 
           <% end %>
           <% if current_user && current_user.admin? %>
 
             <li class="nav-item">
-              <%= link_to 'Enviar Tipo de Receita', new_recipe_type_path, class:"nav-link " %>
+              <%= link_to t(:new_recipe_type), new_recipe_type_path, class:"nav-link " %>
             </li>
 
             <li class="nav-item">
-              <%= link_to 'Enviar Cozinha', new_cuisine_path, class:"nav-link " %>
+              <%= link_to t(:new_cuisine), new_cuisine_path, class:"nav-link " %>
             </li>
 
             <li class="nav-item">
-              <%= link_to 'Receitas Pendentes', pending_recipes_path, class:"nav-link " %>
+              <%= link_to t(:pendind_recipes), pending_recipes_path, class:"nav-link " %>
             </li>
 
           <%end%>

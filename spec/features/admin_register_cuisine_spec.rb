@@ -1,18 +1,13 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'Admin register recipe_type' do
   scenario 'successfully' do
     #arranje
-    admin = User.create(email: 'gere@teste.com', password: '123456', admin: true)
+    admin = create(:admin)
     #act
+    login_as(admin, scope: :user)
     visit root_path
-    click_on 'Entrar'
-
-    within('.formulario') do
-      fill_in 'Email', with: admin.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Enviar Cozinha'
     fill_in 'Nome', with: 'Japonesa'
     click_on 'Enviar'
@@ -23,43 +18,34 @@ feature 'Admin register recipe_type' do
 
   scenario 'and must fill name field' do
     #arranje
-    admin = User.create(email: 'gere@teste.com', password: '123456', admin: true)
+    admin = create(:admin)
     #act
+    login_as(admin, scope: :user)
     visit root_path
-    click_on 'Entrar'
-
-    within('.formulario') do
-      fill_in 'Email', with: admin.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Enviar Cozinha'
     fill_in 'Nome', with: ''
     click_on 'Enviar'
 
     #assert
     expect(page).to have_content('Não foi possível salvar cozinha')
+    expect(page).to have_content('Nome não pode ficar em branco')
   end
 
 
   scenario 'and must be unique' do
     #arranje
-    cuisine = Cuisine.create(name: 'Japonesa')
-    admin = User.create(email: 'gere@teste.com', password: '123456', admin: true)
+    cuisine = create(:cuisine, name: 'Japonesa')
+    admin = create(:admin)
     #act
+    login_as(admin, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: admin.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Enviar Cozinha'
     fill_in 'Nome', with: cuisine.name
     click_on 'Enviar'
 
     #assert
     expect(page).to have_content('Não foi possível salvar cozinha')
+    expect(page).to have_content('Nome já está em uso')
   end
 end

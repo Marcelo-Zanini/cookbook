@@ -1,36 +1,17 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'User view owned recipes' do
   scenario 'successfully' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    other_user = User.create(email: 'gere@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                          recipe_type: recipe_type, cuisine: cuisine,
-                          user: user, cook_time: 50,
-                          ingredients: 'Farinha, açucar, cenoura',
-                          cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-    other_recipe = Recipe.create(title: 'Bolo de laranja', difficulty: 'Médio',
-                                recipe_type: recipe_type, cuisine: cuisine,
-                                user: user, cook_time: 50,
-                                ingredients: 'Farinha, açucar, cenoura',
-                                cook_method: 'Cozinhe a laranja, corte em pedaços pequenos, misture com o restante dos ingredientes')
-    another_recipe = Recipe.create(title: 'Bolo de maçã',difficulty: 'Médio',
-                                  recipe_type: recipe_type, cuisine: cuisine,
-                                  user: other_user, cook_time: 50,
-                                  ingredients: 'Farinha, açucar, cenoura',
-                                  cook_method: 'Cozinhe a maçã, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    user = create(:user)
+    other_user = create(:user)
+    recipe = create(:recipe, user: user)
+    other_recipe = create(:recipe, user: user)
+    another_recipe = create(:recipe, user: other_user)
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on 'Minhas Receitas'
     #assert
     expect(page).to have_css('.owner', text: "Receitas criadas por #{user.email}")

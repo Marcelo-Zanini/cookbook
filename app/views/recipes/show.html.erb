@@ -4,13 +4,13 @@
   <p>Receita Aguardando Aprovação</p>
 <% end %>
 <%if current_user && current_user.admin?%>
-  <%= link_to 'Ativar', activate_recipe_path(@recipe), method: :post %>
-  <%= link_to 'Rejeitar', reject_recipe_path(@recipe), method: :post %>
+  <%= link_to t(:activate), activate_recipe_path(@recipe), method: :post %>
+  <%= link_to t(:reject), reject_recipe_path(@recipe), method: :post %>
 <% end %>
 <h4>
   Receita enviada por <%= @recipe.user.email %>
 <%if current_user == @recipe.user %>
-  <%= link_to 'Editar', edit_recipe_path(@recipe) %>
+  <%= link_to t(:edit), edit_recipe_path(@recipe) %>
 <% end %>
 </h4>
 <h3> Detalhes </h3>
@@ -24,13 +24,13 @@
 <p><%= @recipe.cook_time_min %></p>
 <h3> Ingredientes </h3>
 <p><%= @recipe.ingredients %></p>
-<h3> Como Preparar </h3>
+<h3> Método de Preparo </h3>
 <p><%= @recipe.cook_method %></p>
 
 <%= form_for @list_item, url: add_to_list_recipe_path do |f| %>
 
-  <%= f.label :recipe_list_id, 'Minhas Listas' %>
+  <%= f.label :recipe_list_id, t(:my_lists) %>
   <%= f.collection_select(:recipe_list_id, @recipe_lists, :id, :name) %>
 
-  <%= f.submit 'Adicionar à Lista' %>
+  <%= f.submit t(:add_to_list) %>
 <% end %>

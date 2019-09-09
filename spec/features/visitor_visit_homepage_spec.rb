@@ -1,4 +1,5 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'Visitor visit homepage' do
   scenario 'successfully' do
@@ -9,14 +10,8 @@ feature 'Visitor visit homepage' do
 
   scenario 'and view recipe' do
     #cria os dados necessários
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50, status: :active,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    recipe = create(:recipe)
+    recipe.active!
 
     # simula a ação do usuário
     visit root_path
@@ -31,23 +26,11 @@ feature 'Visitor visit homepage' do
 
   scenario 'and view recipes list' do
     #cria os dados necessários
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    another_recipe_type = RecipeType.create(name: 'Prato principal')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    another_cuisine = Cuisine.create(name: 'Australiana')
-    recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50, status: :active,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-    another_recipe = Recipe.create(title: 'Feijoada',
-                                   recipe_type: another_recipe_type,
-                                   cuisine: another_cuisine,
-                                   difficulty: 'Difícil',
-                                   user: user, cook_time: 50, status: :active,
-                                   ingredients: 'Feijão e carnes',
-                                   cook_method: 'Misture o feijão com as carnes')
+
+    recipe = create(:recipe, title: 'Bolo de Cenoura')
+    another_recipe = create(:recipe, title: 'Bolinho de Bacalhau')
+    recipe.active!
+    another_recipe.active!
 
     # simula a ação do usuário
     visit root_path

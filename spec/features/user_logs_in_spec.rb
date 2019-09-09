@@ -1,9 +1,11 @@
 require 'rails_helper'
 
+FactoryBot.find_definitions
+
 feature 'User logs in' do
   scenario 'succesfully' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
+    user = create(:user, email: 'marcelo@teste.com', password: '123456')
     #act
     visit root_path
     click_on 'Entrar'
@@ -18,8 +20,8 @@ feature 'User logs in' do
     expect(page).to have_content("Olá, #{user.email}")
     expect(page).to have_link('Sair')
     expect(page).not_to have_link('Entrar')
-
   end
+
   scenario 'and must be registered' do
     #act
     visit root_path
@@ -31,10 +33,12 @@ feature 'User logs in' do
    end
     #assert
     expect(current_path).to eq new_user_session_path
+    expect(page).to have_content('E-mail ou senha inválida')
   end
+
   scenario 'and logs out succesflly' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
+    user = create(:user, email: 'marcelo@teste.com', password: '123456')
     #act
     visit root_path
     click_on 'Entrar'

@@ -1,0 +1,32 @@
+pt-BR:
+  activerecord:
+    model:
+      user: Usuário
+      recipe: Receita
+      recipe_list: Lista de Receitas
+      recipe_type: Tipo de Receitas
+      cuisine: Cozinha
+      list_item: Item da Lista
+    attributes:
+      user:
+        email: E-mail
+        password: Senha
+      recipe_list:
+        name: Nome
+      recipe_type:
+        name: Nome
+      cuisine:
+        name: Nome
+      recipe:
+        picture: Imagem
+        title: Título
+        difficulty: Dificuldade
+        cook_time: Tempo de Preparo
+        ingredients: Ingredientes
+        cook_method: Método de Preparo
+        status: Status
+        active: Ativo
+        rejected: Rejeitado
+        pending: Pendente
+        recipe_type_id: Tipo de Receita
+        cuisine_id: Cozinha

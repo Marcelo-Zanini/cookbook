@@ -6,11 +6,11 @@
       <div class="mt-4 mb-0 float-right">
         <h5>
         <% if user_signed_in? %>
-          Olá, <%= current_user.email %>
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete%>
+          <%= t(:hello) %>, <%= current_user.email %>
+            <%= link_to t(:sign_out), destroy_user_session_path, method: :delete%>
 
         <% else %>
-          <%= link_to 'Entrar', new_user_session_path %>
+          <%= link_to t(:sign_in), new_user_session_path %>
         <% end %>
       </h5>
       </div>

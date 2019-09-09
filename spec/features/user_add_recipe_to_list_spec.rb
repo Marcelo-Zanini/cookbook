@@ -1,17 +1,13 @@
 require 'rails_helper'
+FactoryBot.find_definitions
 
 feature 'User add recipe to list' do
   scenario 'successfully' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50, status: :active,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+    user = create(:user, email: 'user@mail.com')
+    recipe_list = create(:recipe_list, user: user)
+    recipe = create(:recipe)
+    recipe.active!
     #act
     login_as(user, scope: :user)
     visit root_path
@@ -26,25 +22,15 @@ feature 'User add recipe to list' do
   end
   scenario 'and must be unique in the list' do
     #arrange
-    user = User.create(email: 'marcelo@teste.com', password: '123456')
-    recipe_list = RecipeList.create(user: user, name: 'Gostosuras')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                           recipe_type: recipe_type, cuisine: cuisine,
-                           user: user, cook_time: 50, status: :active,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-    list_item = ListItem.create(recipe: recipe, recipe_list: recipe_list)
+    user = create(:user, email: 'user@mail.com')
+    recipe_list = create(:recipe_list, user: user)
+    recipe = create(:recipe)
+    recipe.active!
+    list_item = create(:list_item, recipe: recipe, recipe_list: recipe_list)
     #act
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
 
-    within('.formulario') do
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
     click_on recipe.title
     select recipe_list.name, from: 'Minhas Listas'
     click_on 'Adicionar à Lista'

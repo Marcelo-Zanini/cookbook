@@ -5,4 +5,16 @@ class Api::V1::RecipesController < Api::V1::ApiController
   rescue ActiveRecord::RecordNotFound
     render json: {msg: 'Receita não encontrada' }, status: :not_found
   end
+
+  def create
+    recipe = Recipe.new(set_params)
+    recipe.save!
+    render json: recipe, status: :created
+  end
+
+  private
+  def set_params
+    parameters = params.require(:recipe).permit(%i[user_id title recipe_type_id cuisine_id
+       difficulty cook_time ingredients cook_method picture])
+  end
 end

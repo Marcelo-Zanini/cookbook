@@ -27,6 +27,27 @@ describe 'Post Recipe' do
     expect(json_recipe[:cook_time]).to eq 10
     expect(json_recipe[:ingredients]).to eq 'Ingredients'
     expect(json_recipe[:cook_method]).to eq 'Method'
-
   end
+  it 'and must contain all fields' do
+    #act
+    post api_v1_recipes_path, params: {recipe: {user_id:'',
+                                                recipe_type_id: '',
+                                                cuisine_id: '',
+                                                title: '',
+                                                difficulty: '',
+                                                cook_time: '',
+                                                ingredients: '',
+                                                cook_method: ''}}
+    #assert
+    expect(response.status).to eq 412
+    expect(response.body).to include 'Usuário é obrigatório(a)'
+    expect(response.body).to include 'Tipo de Receita é obrigatório(a)'
+    expect(response.body).to include 'Cozinha é obrigatório(a)'
+    expect(response.body).to include 'Título não pode ficar em branco'
+    expect(response.body).to include 'Dificuldade não pode ficar em branco'
+    expect(response.body).to include 'Tempo de Preparo não pode ficar em branco'
+    expect(response.body).to include 'Ingredientes não pode ficar em branco'
+    expect(response.body).to include 'Método de Preparo não pode ficar em branco'
+
+    end
 end

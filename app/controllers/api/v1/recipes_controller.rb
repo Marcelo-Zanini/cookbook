@@ -10,6 +10,8 @@ class Api::V1::RecipesController < Api::V1::ApiController
     recipe = Recipe.new(set_params)
     recipe.save!
     render json: recipe, status: :created
+  rescue ActiveRecord::RecordInvalid
+    render json: recipe.errors.full_messages, status: :precondition_failed
   end
 
   private

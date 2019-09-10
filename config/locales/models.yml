@@ -30,3 +30,7 @@ pt-BR:
         pending: Pendente
         recipe_type_id: Tipo de Receita
         cuisine_id: Cozinha
+        user_id: Usuário
+        recipe_type: Tipo de Receita
+        cuisine: Cozinha
+        user: Usuário

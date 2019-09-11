@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Post Recipe' do
   it 'successfully' do
-    #arrange
+      #arrange
     user = create(:user)
     recipe_type = create(:recipe_type)
     cuisine = create(:cuisine)
@@ -31,13 +31,13 @@ describe 'Post Recipe' do
   it 'and must contain all fields' do
     #act
     post api_v1_recipes_path, params: {recipe: {user_id:'',
-                                                recipe_type_id: '',
-                                                cuisine_id: '',
-                                                title: '',
-                                                difficulty: '',
-                                                cook_time: '',
-                                                ingredients: '',
-                                                cook_method: ''}}
+                                              recipe_type_id: '',
+                                              cuisine_id: '',
+                                              title: '',
+                                              difficulty: '',
+                                              cook_time: '',
+                                              ingredients: '',
+                                              cook_method: ''}}
     #assert
     expect(response.status).to eq 412
     expect(response.body).to include 'Usuário é obrigatório(a)'
@@ -48,6 +48,5 @@ describe 'Post Recipe' do
     expect(response.body).to include 'Tempo de Preparo não pode ficar em branco'
     expect(response.body).to include 'Ingredientes não pode ficar em branco'
     expect(response.body).to include 'Método de Preparo não pode ficar em branco'
-
-    end
+  end
 end

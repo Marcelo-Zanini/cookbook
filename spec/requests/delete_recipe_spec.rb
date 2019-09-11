@@ -13,7 +13,7 @@ describe 'Delete recipe' do
 
   it 'and must exists' do
     #act
-    get api_v1_recipe_path(id: 001)
+    delete api_v1_recipe_path(id: 001)
     #assert
     expect(response.status).to eq 404
     expect(response.body).to include 'Receita não encontrada'

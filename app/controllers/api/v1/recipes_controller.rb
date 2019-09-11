@@ -17,6 +17,8 @@ class Api::V1::RecipesController < Api::V1::ApiController
   def destroy
     recipe = Recipe.find(params[:id])
     render json: "#{recipe.title} excluida com sucesso", status: :accepted
+  rescue ActiveRecord::RecordNotFound
+    render json: {msg: 'Receita não encontrada' }, status: :not_found
   end
 
   private

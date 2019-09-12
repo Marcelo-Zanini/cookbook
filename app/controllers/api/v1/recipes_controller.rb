@@ -11,20 +11,44 @@ class Api::V1::RecipesController < Api::V1::ApiController
     render json: recipe.errors.full_messages, status: :precondition_failed
   end
 
-  def show
-    render json: @recipe, status: :ok
-  end
-
   def validate
     return render json: {msg:'Receita não está pendente'},
-      status: :precondition_failed unless @recipe.pending?
+    status: :precondition_failed unless @recipe.pending?
 
     case params[:status]
     when 'rejected'
       @recipe.rejected!
     when 'active'
       @recipe.active!
+    when 'coffee'
+      return render json:{msg: 'HOW DARE YOU TRY TO BREW COFFEE ON MY TEAPOT?!?!'},
+        status: 418
+    when nil
+      return render json: {msg: 'Status é obrigatório'}, status: :not_acceptable
+    else
+      return render json: {msg: "Status #{params[:status]} não existe"},
+        status: :unprocessable_entity
     end
+    render json: @recipe, status: :ok
+  end
+
+  def index
+    case params[:status]
+    when 'pending'
+      recipes = Recipe.pending
+    when 'active'
+      recipes = Recipe.active
+    when 'rejected'
+      recipes = Recipe.rejected
+    else
+      recipes = Recipe.all
+    end
+    return render json: recipes, status: :ok unless recipes.empty?
+
+    render json: {msg: 'Não há receitas disponíveis'}, status: :not_found
+  end
+
+  def show
     render json: @recipe, status: :ok
   end
 

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Get recipe type details' do
+
   it 'and finds recipe type' do
     #arrange
     recipe_type = create(:recipe_type, name: 'Tipo 1')
@@ -26,6 +27,7 @@ describe 'Get recipe type details' do
     expect(response.body).to include recipe.title
     expect(response.body).to include other_recipe.title
   end
+
   it "and must not contain other type's recipes" do
     #arrange
     recipe_type = create(:recipe_type, name: 'Tipo 1')
@@ -39,5 +41,14 @@ describe 'Get recipe type details' do
     expect(json_recipe_type[:name]).to eq 'Tipo 1'
     expect(response.body).to include recipe.title
     expect(response.body).not_to include wrong_recipe.title
+  end
+
+  it 'and must exist' do
+    #act
+    get api_v1_recipe_type_path(id: 123)
+    json_recipe_type = JSON.parse(response.body, symbolize_names: true)
+    #assert
+    expect(response.status).to eq 404
+    expect(json_recipe_type[:msg]).to eq 'Tipo de Receita não encontrado'
   end
 end

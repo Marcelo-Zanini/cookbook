@@ -9,6 +9,7 @@ describe 'Delete recipe' do
     #assert
     expect(response.status).to eq 202
     expect(response.body).to include 'Receita de teste excluida com sucesso'
+    expect(Recipe.last).to be_falsey
   end
 
   it 'and must exists' do
